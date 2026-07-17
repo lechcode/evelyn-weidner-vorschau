@@ -1,0 +1,10 @@
+# nur die fertige Website deployen — kein Arbeits-/Kundenmaterial
+_projekt/
+kunde-material/
+beweise/
+material/
+*.py
+*.pyc
+__pycache__/
+.DS_Store
+assets/preview/*.jpg

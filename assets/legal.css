@@ -1,0 +1,16 @@
+/* Rechtsseiten (Impressum/Datenschutz) — schlank & lesbar. Nutzt Tokens aus site.css. */
+.legal{padding:calc(var(--nav-h) + clamp(30px,4vw,52px)) 0 var(--space-6);}
+.legal .wrap{width:min(760px,92vw);}
+.legal .demo-note{background:var(--sand);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;font-size:14px;color:var(--ink-soft);margin-bottom:var(--space-5);line-height:var(--lh-relaxed);}
+.legal h1{font-size:var(--step-4);margin-bottom:var(--space-2);color:var(--forest-deep);}
+.legal .updated{font-size:13px;color:var(--ink-faint);margin-bottom:var(--space-5);letter-spacing:.02em;}
+.legal h2{font-size:var(--step-2);margin:var(--space-5) 0 var(--space-2);color:var(--forest);font-family:var(--serif);}
+.legal h3{font-size:var(--step-1);margin:var(--space-3) 0 8px;color:var(--forest);font-family:var(--sans);font-weight:700;}
+.legal p,.legal li{font-size:15.5px;line-height:var(--lh-relaxed);color:var(--ink-soft);}
+.legal p{margin-bottom:14px;}
+.legal ul{margin:0 0 14px 22px;display:flex;flex-direction:column;gap:7px;}
+.legal a{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
+.legal a:hover{color:var(--moss);}
+.legal strong{color:var(--ink);}
+.legal .box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;margin-bottom:16px;}
+.legal address{font-style:normal;line-height:var(--lh-relaxed);color:var(--ink-soft);font-size:15.5px;}

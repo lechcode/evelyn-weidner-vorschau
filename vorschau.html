@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- ENTHÜLLUNGSSEITE (QR-/Link-Ziel) · Lechcode · noindex · Evelyn weiß noch nichts. Team-Signatur Lenny & Michael. -->
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Deine neue Seite, Evelyn — von Lechcode</title>
+  <meta name="description" content="Eine unverbindliche Design-Vorschau für Evelyn Weidner, gebaut von Lechcode." />
+  <meta property="og:title" content="Evelyn — deine neue Website ist da 🌿" />
+  <meta property="og:description" content="Naturverbindung, der Jahreskreis, ein eigener Shop & Journal — cookiefrei und blitzschnell. Schau sie dir an." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:url" content="https://lechcode.github.io/evelyn-weidner-vorschau/vorschau.html" />
+  <meta property="og:image" content="https://lechcode.github.io/evelyn-weidner-vorschau/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="theme-color" content="#123321" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123321'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%23D6A82E' stroke-width='1.3'/%3E%3Cg stroke='%23EBE3D2' stroke-width='1'%3E%3Cpath d='M16 6.5V25.5M6.5 16H25.5M9.2 9.2l13.6 13.6M22.8 9.2 9.2 22.8'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23D6A82E'/%3E%3C/svg%3E" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <style>
+  :root{
+    --forest:#123321; --forest-deep:#0A2514; --moss:#7F9241; --cream:#F5EFE2; --sand:#EBE3D2; --paper:#FBF7EE;
+    --gold:#C89A2C; --gold-bright:#E0B441; --terra:#B06A3C; --ink:#25281F; --ink-soft:#4E5344; --line:rgba(37,40,31,.13);
+    --serif:"Cormorant Garamond",Georgia,serif; --sans:"Mulish",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:clip;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;color:var(--forest-deep);}
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{width:min(1000px,92vw);margin-inline:auto;}
+  .narrow{width:min(720px,92vw);margin-inline:auto;}
+  section{padding:clamp(50px,8vw,90px) 0;}
+  .eyebrow{font-family:var(--sans);font-weight:800;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);display:inline-flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--gold);}
+  .btn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;background:var(--forest);color:var(--paper);font-family:var(--sans);font-weight:700;font-size:16px;padding:16px 30px;border-radius:999px;box-shadow:0 16px 30px -14px rgba(10,37,20,.6);transition:transform .3s var(--ease),background .3s;text-decoration:none;}
+  .btn:hover{transform:translateY(-2px);background:#1C4430;}
+  .btn-gold{background:var(--gold);color:var(--forest-deep);}
+  .btn-gold:hover{background:var(--gold-bright);}
+  .btn-big{font-size:18px;padding:20px 40px;}
+
+  /* Hero */
+  .v-hero{text-align:center;padding:clamp(60px,10vw,110px) 0 clamp(40px,6vw,70px);background:radial-gradient(60vmax 40vmax at 50% -8%,rgba(127,146,65,.16),transparent 60%),linear-gradient(180deg,var(--paper),var(--cream) 75%);}
+  .v-hero .mark{width:56px;height:56px;margin:0 auto clamp(20px,3vw,30px);}
+  .v-hero h1{font-size:clamp(38px,7vw,72px);letter-spacing:.005em;}
+  .v-hero h1 em{font-style:italic;color:var(--forest);position:relative;}
+  .v-hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.1em;background:linear-gradient(90deg,var(--gold-bright),var(--gold));opacity:.9;z-index:-1;}
+  .v-hero p{font-size:clamp(17px,2.4vw,21px);color:var(--ink-soft);max-width:44ch;margin:clamp(18px,3vw,26px) auto 0;line-height:1.7;}
+
+  /* Slider */
+  .slider{position:relative;max-width:1000px;margin:clamp(28px,4vw,40px) auto 0;border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -44px rgba(10,37,20,.55);aspect-ratio:1200/1600;touch-action:pan-y;user-select:none;cursor:ew-resize;}
+  .slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none;}
+  .slider .before-wrap{position:absolute;inset:0;clip-path:inset(0 50% 0 0);}
+  .slider .lbl{position:absolute;top:14px;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:999px;z-index:3;}
+  .slider .lbl-b{left:14px;background:rgba(176,106,60,.92);color:#fff;}
+  .slider .lbl-a{right:14px;background:rgba(18,51,33,.92);color:var(--gold-bright);}
+  .slider .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--paper);transform:translateX(-50%);z-index:4;box-shadow:0 0 0 1px rgba(10,37,20,.15);}
+  .slider .grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--paper);z-index:5;box-shadow:0 6px 18px -6px rgba(10,37,20,.5);display:grid;place-items:center;}
+  .slider .grip svg{width:24px;height:24px;color:var(--forest);}
+  .slider-hint{text-align:center;font-size:13px;color:var(--ink-soft);margin-top:12px;}
+
+  /* Zahlen-Band */
+  .stats{background:var(--forest);color:var(--cream);}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center;}
+  .stat .big{font-family:var(--serif);font-size:clamp(30px,5vw,52px);color:var(--gold-bright);font-weight:600;line-height:1;}
+  .stat .big .arrow{color:var(--moss);font-size:.6em;}
+  .stat .lbl{margin-top:12px;font-size:14.5px;color:#C4CBB4;line-height:1.5;}
+  .stat .sub{display:block;font-size:12.5px;color:#94a184;margin-top:4px;}
+
+  /* Handy-Reframe */
+  .phones{display:flex;gap:clamp(24px,6vw,64px);justify-content:center;align-items:flex-start;flex-wrap:wrap;}
+  .phone{width:min(240px,42vw);}
+  .phone .frame{position:relative;border:9px solid #1a1a1a;border-radius:34px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(10,37,20,.5);aspect-ratio:390/1400;background:#000;max-height:520px;}
+  .phone .frame::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:34%;height:18px;background:#1a1a1a;border-radius:0 0 12px 12px;z-index:2;}
+  .phone .frame img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .phone .cap{text-align:center;margin-top:14px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
+  .phone.b .cap{color:var(--terra);} .phone.a .cap{color:var(--forest);}
+
+  /* Karten / Listen */
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,3vw,36px);}
+  .fixlist{list-style:none;display:flex;flex-direction:column;gap:16px;}
+  .fixlist li{display:flex;gap:14px;align-items:flex-start;font-size:16px;line-height:1.6;color:var(--ink-soft);}
+  .fixlist svg{width:24px;height:24px;flex:none;color:var(--moss);margin-top:2px;}
+  .fixlist b{color:var(--forest);}
+  .newgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .newcard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px;}
+  .newcard .ic{width:34px;height:34px;color:var(--gold);margin-bottom:12px;}
+  .newcard h3{font-size:22px;margin-bottom:6px;}
+  .newcard p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+  .sec-head{text-align:center;max-width:60ch;margin:0 auto clamp(30px,5vw,48px);}
+  .sec-head h2{font-size:clamp(28px,4.6vw,44px);margin-top:14px;}
+  .sec-head p{color:var(--ink-soft);font-size:17px;margin-top:14px;line-height:1.7;}
+  .palette{display:flex;gap:0;border-radius:14px;overflow:hidden;max-width:420px;margin:22px auto 0;box-shadow:0 20px 40px -24px rgba(10,37,20,.4);}
+  .palette span{flex:1;height:70px;}
+
+  /* Preis / offen */
+  .price-card{background:linear-gradient(160deg,var(--forest),var(--forest-deep));color:var(--cream);border-radius:20px;padding:clamp(30px,5vw,56px);text-align:center;}
+  .price-card h2{color:var(--paper);font-size:clamp(28px,4.4vw,42px);}
+  .price-card p{color:#C4CBB4;font-size:17px;margin-top:16px;line-height:1.7;max-width:52ch;margin-inline:auto;}
+  .price-card .steps{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+  .price-card .pill{background:rgba(241,236,223,.08);border:1px solid rgba(241,236,223,.18);border-radius:999px;padding:10px 20px;font-size:14px;color:var(--cream);}
+
+  /* Kalenderband (.lcbook) — Lechcode-Farben hartkodiert */
+  .lcbook{background:#16130c;color:#f3ead9;border-radius:20px;padding:clamp(30px,5vw,52px);text-align:center;position:relative;overflow:hidden;}
+  .lcbook h2{color:#f3ead9;font-size:clamp(26px,4.2vw,38px);}
+  .lcbook p{color:#c9bda3;font-size:16px;margin-top:14px;max-width:46ch;margin-inline:auto;line-height:1.7;}
+  .lcbook a{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:linear-gradient(180deg,#e8923f,#d97b28);color:#16130c;font-weight:800;font-size:16px;padding:16px 32px;border-radius:999px;text-decoration:none;transition:transform .3s var(--ease);}
+  .lcbook a:hover{transform:translateY(-2px);}
+  .lcbook .hint{margin-top:14px;font-size:12.5px;color:#9c9078;}
+
+  /* Leonie */
+  .leonie{display:flex;gap:20px;align-items:center;background:var(--sand);border-radius:18px;padding:clamp(22px,3vw,32px);flex-wrap:wrap;}
+  .leonie .ic{width:44px;height:44px;color:var(--terra);flex:none;}
+  .leonie div{flex:1;min-width:240px;}
+  .leonie h3{font-size:22px;margin-bottom:6px;}
+  .leonie p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+
+  /* Footer */
+  .v-foot{background:var(--forest-deep);color:#C4CBB4;text-align:center;padding:clamp(40px,6vw,60px) 0;}
+  .v-foot .sig{font-family:var(--serif);font-size:26px;color:var(--paper);font-weight:600;}
+  .v-foot p{font-size:14px;margin-top:12px;line-height:1.7;}
+  .v-foot a{color:var(--gold-bright);text-decoration:none;}
+
+  @media (max-width:720px){
+    .stats-grid{grid-template-columns:1fr;gap:28px;}
+    .newgrid{grid-template-columns:1fr;}
+    .slider{aspect-ratio:1200/1600;}
+  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;}}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="v-hero">
+    <div class="wrap">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="#123321" stroke-width="1.2" opacity=".5"/><g stroke="#123321" stroke-width="1" opacity=".7"><path d="M16 2v28M2 16h28M6.3 6.3l19.4 19.4M25.7 6.3 6.3 25.7"/></g><circle cx="16" cy="16" r="3.4" fill="#C89A2C"/></svg>
+      <span class="eyebrow" style="margin-bottom:22px;">Eine Vorschau, nur für dich</span>
+      <h1>Hallo Evelyn — deine neue Seite <em>ist da.</em></h1>
+      <p>Wir haben deine Website neu gedacht — rund um das, was dein Wirken trägt: den Jahreskreis. Cookiefrei, blitzschnell, mit eigenem Shop und Journal. Schau sie dir in Ruhe an.</p>
+      <div style="margin-top:32px;"><a href="index.html" class="btn btn-gold btn-big">Deine neue Seite ansehen <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <!-- VORHER / NACHHER SLIDER -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="justify-content:center;">Vorher &amp; Nachher</span>
+        <h2>Zieh den Regler — und sieh den Unterschied</h2>
+      </div>
+      <div class="slider" id="slider">
+        <img class="after" src="assets/preview/nachher-desktop.webp" alt="Neue Website von Evelyn Weidner" width="1200" height="1600">
+        <div class="before-wrap" id="beforeWrap"><img src="assets/preview/vorher-desktop.webp" alt="Alte Website" width="1200" height="1600"></div>
+        <span class="lbl lbl-b">Vorher</span>
+        <span class="lbl lbl-a">Nachher</span>
+        <div class="handle" id="handle"></div>
+        <div class="grip" id="grip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l-4 6 4 6M15 6l4 6-4 6"/></svg></div>
+      </div>
+      <p class="slider-hint">Tipp: Regler nach links ziehen zeigt die alte Seite, nach rechts die neue.</p>
+    </div>
+  </section>
+
+  <!-- ZAHLEN-BAND -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:36px;"><h2 style="color:var(--paper);">In Zahlen</h2></div>
+      <div class="stats-grid">
+        <div class="stat"><div class="big">17,3s <span class="arrow">→</span> 2,6s</div><div class="lbl">Ladezeit am Handy<span class="sub">fast 7× schneller</span></div></div>
+        <div class="stat"><div class="big">57 <span class="arrow">→</span> 94</div><div class="lbl">Performance-Score (Google Lighthouse)<span class="sub">4,3 MB → 0,4 MB Seitengewicht</span></div></div>
+        <div class="stat"><div class="big">0</div><div class="lbl">Cookies &amp; Tracker<span class="sub">statt Google, Facebook &amp; Werbepartner</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDY-REFRAME -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="justify-content:center;">Am Handy zu Hause</span>
+        <h2>Über 60 % deiner Besucher kommen vom Smartphone</h2>
+        <p>Deshalb haben wir die Seite von Anfang an fürs Handy gedacht — mit dem Jahresrad, einem sauberen Menü und Buttons, die man mit dem Daumen trifft.</p>
+      </div>
+      <div class="phones">
+        <div class="phone b"><div class="frame"><img src="assets/preview/vorher-mobil.webp" alt="Alte Seite am Handy" width="390" height="1400"></div><div class="cap">Vorher</div></div>
+        <div class="phone a"><div class="frame"><img src="assets/preview/nachher-mobil.webp" alt="Neue Seite am Handy" width="390" height="1400"></div><div class="cap">Nachher</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS NEU IST -->
+  <section class="sand" style="background:var(--sand);">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="justify-content:center;">Was jetzt möglich ist</span>
+        <h2>Vier Dinge, die du dir gewünscht hast</h2>
+      </div>
+      <div class="newgrid">
+        <div class="newcard">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg>
+          <h3>Das Jahresrad als Herzstück</h3>
+          <p>Deine ganze Arbeit dreht sich um den Jahreskreis — also haben wir ihn zur lebendigen Signatur deiner Seite gemacht. Er zeigt sogar, in welcher Jahreszeit-Qualität wir gerade stehen.</p>
+        </div>
+        <div class="newcard">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 2l1 4h13l-2 9H8L6 2z"/><path d="M6 6H3"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+          <h3>Dein eigener Shop — ohne Zwischenhändler</h3>
+          <p>Kräuterwanderungen &amp; Kurse buchen deine Teilnehmer direkt bei dir. Die Zahlung läuft sicher über Stripe auf dein Konto — keine Plattform-Gebühr, kein Vermittler.</p>
+        </div>
+        <div class="newcard">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h16v16H4z" opacity="0"/><path d="M5 3h11l4 4v14H5z"/><path d="M15 3v5h5M8 13h8M8 17h6"/></svg>
+          <h3>Ein Journal für dein Pflanzenwissen</h3>
+          <p>Ein Blog, der dich bei Google findbar macht — „Beifuß räuchern", „Wildkräuter im Mai". Zwei Artikel liegen schon bereit. Neue schreibst du, wir bringen sie online.</p>
+        </div>
+        <div class="newcard">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21c-5-4-8-8-8-12a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 4-3 8-8 12z"/></svg>
+          <h3>Über mich, Naturverbindung &amp; dōTERRA</h3>
+          <p>Eigene Seiten für deine Geschichte, die Earth Keeper's Journey, die Gartenberatung und deine ätherischen Öle — klar geführt, damit jeder seinen Weg findet.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:38px;">
+        <span class="eyebrow" style="justify-content:center;">Deine Farbwelt, behutsam destilliert</span>
+        <div class="palette"><span style="background:#123321"></span><span style="background:#7F9241"></span><span style="background:#C89A2C"></span><span style="background:#EBE3D2"></span><span style="background:#F5EFE2"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLEICH MITKORRIGIERT -->
+  <section>
+    <div class="narrow">
+      <div class="sec-head">
+        <span class="eyebrow" style="justify-content:center;">Das haben wir gleich mitgemacht</span>
+        <h2>Ein paar Dinge, die dir Ärger ersparen</h2>
+      </div>
+      <div class="card">
+        <ul class="fixlist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Kein Cookie-Banner mehr.</b> Deine alte Seite lud Cookies von Google, Facebook &amp; Werbepartnern und brauchte deshalb ein Zustimmungs-Fenster. Die neue kommt ganz ohne aus — das ist datensparsam und angenehm für deine Besucher.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Aus 17 Sekunden werden knapp 3.</b> Die alte Seite war 4,3 MB schwer und brauchte am Handy sehr lange. Wer so lange wartet, ist oft schon weg. Die neue ist 11× leichter.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Rechtstexte aktualisiert.</b> Wir haben Impressum &amp; Datenschutz auf den aktuellen Stand gebracht (u. a. „§ 5 DDG" statt des veralteten „TMG") und den mittlerweile abgeschalteten EU-Streitschlichtungs-Link entfernt, der bei alten Seiten gern abgemahnt wird.</span></li>
+        </ul>
+        <p style="font-size:13px;color:var(--ink-soft);margin-top:20px;font-style:italic;">Alles behutsam — an deinen schönen Fotos und deinen Worten haben wir nichts weggenommen, nur besser in Szene gesetzt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS WIR NOCH BRAUCHEN -->
+  <section class="sand" style="background:var(--sand);">
+    <div class="narrow">
+      <div class="sec-head">
+        <span class="eyebrow" style="justify-content:center;">Damit sie live gehen kann</span>
+        <h2>Ein paar Kleinigkeiten von dir</h2>
+      </div>
+      <div class="card">
+        <ul class="fixlist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><b>Deine Fotos.</b> Die wunderschönen Bilder sind von Jasmin Breidenbach — dürfen wir sie weiterhin nutzen (mit Credit)? Kurz bei ihr nachfragen genügt.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><b>Preise &amp; Termine.</b> Aktuell steht überall „auf Anfrage". Sag uns deine Preise und den nächsten Kräuterwanderungs-Termin — dann schalten wir den Shop scharf.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><b>Feinschliff Naturverbindung &amp; dōTERRA.</b> Du wolltest die Naturverbindungs-Seite noch für dich schärfen — die Struktur steht, den Rest machen wir gemeinsam im Gespräch.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREIS (offen, Plus-Projekt) -->
+  <section>
+    <div class="narrow">
+      <div class="price-card">
+        <span class="eyebrow" style="justify-content:center;color:var(--gold-bright);">Was es kostet</span>
+        <h2 style="margin-top:16px;">Ein faires, individuelles Angebot</h2>
+        <p>Weil hier mehr drinsteckt als eine Standard-Seite — ein eigener Shop, ein Journal, das Jahresrad und mehrere liebevoll gebaute Unterseiten — machen wir dir ein persönliches Angebot statt einer Pauschale. Fair, transparent, ohne versteckte Kosten. Am besten sprechen wir kurz darüber, was du wirklich brauchst.</p>
+        <div class="steps">
+          <span class="pill">1 · 30-Minuten-Gespräch</span>
+          <span class="pill">2 · Feinschliff nach deinen Wünschen</span>
+          <span class="pill">3 · Umzug &amp; Go-Live</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEONIE -->
+  <section class="sand" style="background:var(--sand);padding-top:0;">
+    <div class="narrow">
+      <div class="leonie">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 16l5-5 4 4 3-3 4 4"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/></svg>
+        <div>
+          <h3>Auf Wunsch dazu: Fotos, Logo &amp; Branding</h3>
+          <p>Falls du irgendwann frische Profi-Fotos, ein verfeinertes Logo oder ein rundes Branding möchtest — Leonie, unsere Grafikdesignerin &amp; Fotografin, ist Teil des Teams. Ganz ohne Druck, nur wenn du magst.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KALENDERBAND -->
+  <section>
+    <div class="narrow">
+      <div class="lcbook">
+        <h2>Lust auf ein kurzes Gespräch, Evelyn?</h2>
+        <p>Kein Verkaufsgespräch — einfach kennenlernen, deine Fragen klären und schauen, ob es passt. Such dir einen Moment aus, der dir passt.</p>
+        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1vusFYCV6O45i109a0J5ruEFtWCT7iFsq5t4Mb2KvQmNhdkMtlddml9dx5V2jButjV2SUGapFg?gv=true" target="_blank" rel="noopener noreferrer">Termin aussuchen <span aria-hidden="true">→</span></a>
+        <p class="hint">Öffnet unseren Kalender in einem neuen Tab — diese Seite bleibt cookiefrei.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="v-foot">
+    <div class="narrow">
+      <div class="sig">Lenny &amp; Michael</div>
+      <p>Unverbindliche Design-Vorschau — erstellt von <b style="color:var(--paper);">Lechcode</b>, Landsberg am Lech.<br>Schreib uns: <a href="mailto:info@lechcode.de">info@lechcode.de</a></p>
+    </div>
+  </footer>
+
+  <script>
+  // Vorher/Nachher-Slider
+  (function(){
+    var slider=document.getElementById('slider'), bw=document.getElementById('beforeWrap'),
+        handle=document.getElementById('handle'), grip=document.getElementById('grip');
+    if(!slider) return;
+    function setPos(clientX){
+      var r=slider.getBoundingClientRect();
+      var x=Math.max(0,Math.min(1,(clientX-r.left)/r.width));
+      var pct=(x*100).toFixed(1);
+      bw.style.clipPath='inset(0 '+(100-pct)+'% 0 0)';
+      handle.style.left=pct+'%'; grip.style.left=pct+'%';
+    }
+    var dragging=false;
+    function down(e){dragging=true;try{slider.setPointerCapture(e.pointerId);}catch(err){} setPos(e.clientX);}
+    function move(e){if(dragging)setPos(e.clientX);}
+    function up(){dragging=false;}
+    slider.addEventListener('pointerdown',down);
+    slider.addEventListener('pointermove',move);
+    slider.addEventListener('pointerup',up);
+    slider.addEventListener('pointercancel',up);
+  })();
+  </script>
+</body>
+</html>

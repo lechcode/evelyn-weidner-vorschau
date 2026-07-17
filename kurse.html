@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!-- EVELYN WEIDNER · Kurse & Wanderungen (Shop-Kern) · Lechcode-Vorschau (noindex). Fotos: Jasmin Breidenbach.
+     SHOP: Stripe-Direktlink-Baustein. Evelyn erzeugt pro Termin einen Stripe-Payment-Link und setzt ihn
+     unten als href statt [STRIPE-LINK] ein — Geld fließt direkt auf ihr Konto, kein Zwischenhändler. -->
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('js');if(location.search.indexOf('foto')>-1)document.documentElement.classList.add('foto');</script>
+  <!-- ENTFERNEN sobald Impressum+Datenschutz live & vom Kunden freigegeben -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Kräuterwanderungen &amp; Räucherkurse im Oberland | Evelyn Weidner</title>
+  <meta name="description" content="Kräuterwanderungen, Räucherkurse, Naturkosmetik und Wildpflanzen-Weiterbildung mit Evelyn Weidner rund um Bad Tölz. Aktuelle Termine buchen oder auf die Warteliste eintragen." />
+  <meta property="og:title" content="Kurse &amp; Wanderungen — Kräuter, Räuchern &amp; Jahreskreis" />
+  <meta property="og:description" content="Wildpflanzen sicher bestimmen, räuchern lernen, Naturkosmetik rühren — Kräuterwanderungen und Kurse mit Evelyn Weidner im Oberland." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:url" content="https://lechcode.github.io/evelyn-weidner-vorschau/kurse.html" />
+  <meta property="og:image" content="https://lechcode.github.io/evelyn-weidner-vorschau/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="theme-color" content="#123321" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123321'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%23D6A82E' stroke-width='1.3'/%3E%3Cg stroke='%23EBE3D2' stroke-width='1'%3E%3Cpath d='M16 6.5V25.5M6.5 16H25.5M9.2 9.2l13.6 13.6M22.8 9.2 9.2 22.8'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23D6A82E'/%3E%3C/svg%3E" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/mulish-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+  <a href="#main" class="btn" style="position:absolute;left:-9999px;top:8px;z-index:200;" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Zum Inhalt springen</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-in">
+      <a href="index.html" class="wm" aria-label="Evelyn Weidner — Startseite">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><g stroke="currentColor" stroke-width="1" opacity=".7"><path d="M16 3.5v25M3.5 16h25M7.4 7.4l17.2 17.2M24.6 7.4 7.4 24.6"/></g><circle cx="16" cy="16" r="3" fill="#C89A2C" stroke="none"/></svg>
+        Evelyn Weidner
+      </a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="naturverbindung.html">Naturverbindung</a>
+        <a href="kurse.html" class="active">Kurse &amp; Wanderungen</a>
+        <a href="earth-keepers-journey.html">Jahres-Journey</a>
+        <a href="ueber-mich.html">Über mich</a>
+        <a href="blog.html">Journal</a>
+        <a href="index.html#kontakt" class="btn btn-gold">Kontakt</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="naturverbindung.html"><span>Naturverbindung</span><span class="num">01</span></a>
+    <a href="kurse.html"><span>Kurse &amp; Wanderungen</span><span class="num">02</span></a>
+    <a href="earth-keepers-journey.html"><span>Jahres-Journey</span><span class="num">03</span></a>
+    <a href="ueber-mich.html"><span>Über mich</span><span class="num">04</span></a>
+    <a href="blog.html"><span>Journal</span><span class="num">05</span></a>
+    <a href="index.html#kontakt" class="btn btn-gold mm-cta">Kontakt aufnehmen</a>
+  </nav>
+
+  <main id="main">
+    <!-- Page-Hero -->
+    <section class="page-hero with-figure">
+      <svg class="page-hero-leaf" viewBox="0 0 200 200" aria-hidden="true" fill="none" stroke="#7F9241" stroke-width="1.3"><path d="M100 195V15M100 60C100 60 55 50 45 18M100 60C100 60 145 50 155 18M100 115C100 115 50 105 40 73M100 115C100 115 150 105 160 73"/></svg>
+      <div class="wrap">
+        <div>
+          <span class="eyebrow reveal">Kurse &amp; Wanderungen</span>
+          <h1 class="reveal d1">Lerne deine <em>Pflanzenfreunde</em> kennen.</h1>
+          <p class="lead reveal d2">Du wolltest schon immer mehr über Wildpflanzen wissen — welche essbar und welche giftig sind, wie man räuchert, wie man Naturkosmetik rührt? Dann komm mit nach draußen. Hier findest du aktuelle Termine und alle Kursformate.</p>
+          <div class="hero-cta reveal d3" style="margin-top:var(--space-4);display:flex;gap:14px;flex-wrap:wrap;">
+            <a href="#termine" class="btn">Zu den Terminen <span class="arr" aria-hidden="true">→</span></a>
+            <a href="#formate" class="btn btn-ghost">Alle Kursformate</a>
+          </div>
+        </div>
+        <div class="figure reveal d2">
+          <picture><source type="image/webp" srcset="assets/img/kraeuterkorb-420.webp 420w, assets/img/kraeuterkorb-640.webp 640w, assets/img/kraeuterkorb-860.webp 860w" sizes="(max-width:900px) 80vw, 400px"><img src="assets/img/kraeuterkorb-640.jpg" width="640" height="960" alt="Ein Weidenkorb voller frisch gesammelter Wildkräuter und Blüten in der Wiese" fetchpriority="high"></picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Termine (Shop) -->
+    <section id="termine" class="sand">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Kommende Termine</span>
+          <h2>Sei dabei</h2>
+          <p>Buchbare Termine reservierst du direkt hier — die Bezahlung läuft sicher und ohne Zwischenhändler direkt an mich. Für Formate ohne festen Termin trag dich einfach auf die Warteliste ein.</p>
+        </div>
+
+        <!-- HINWEIS FÜR EVELYN: Pro Termin einen Stripe-Payment-Link erzeugen (dashboard.stripe.com → Zahlungslinks)
+             und unten als href statt "[STRIPE-LINK]" einsetzen. Datum/Preis/Status in der Karte anpassen.
+             Geld fließt direkt auf dein Konto; die Seite bleibt cookiefrei (der Checkout öffnet extern bei Stripe). -->
+        <div style="display:flex;flex-direction:column;gap:16px;" class="reveal d1">
+          <!-- BUCHBAR: echtes Stripe-Beispiel -->
+          <article class="course featured">
+            <div class="when">
+              <span class="date">Sa · 12. Sept</span>
+              <span class="time">14 – 17 Uhr · Gaißach</span>
+            </div>
+            <div class="what">
+              <span class="badge-soft badge-open">Plätze frei</span>
+              <h3 style="margin-top:8px;">Kräuterwanderung — Spätsommer-Fülle</h3>
+              <p>Drei Stunden draußen: Wildpflanzen sicher bestimmen, sammeln und in der Küche &amp; Hausapotheke verwenden. Für Neugierige jeden Alters — Vorwissen brauchst du keins.</p>
+            </div>
+            <div class="act">
+              <span class="price">45&nbsp;€ <span style="font-size:12px;color:var(--ink-faint);font-weight:600;">/&nbsp;Person</span></span>
+              <!-- LIVE: href="#" durch Evelyns Stripe-Payment-Link ersetzen und data-demo-buy entfernen -->
+              <a href="#" data-demo-buy class="btn btn-gold" aria-label="Platz für die Kräuterwanderung am 12. September sichern">Platz sichern <span class="arr" aria-hidden="true">→</span></a>
+              <span class="buy-note" style="font-size:11.5px;color:var(--ink-faint);">Sichere Zahlung via Stripe · öffnet in neuem Tab</span>
+            </div>
+          </article>
+
+          <!-- WARTELISTE: Räucherkurs -->
+          <article class="course">
+            <div class="when">
+              <span class="date" style="font-size:var(--step-2);">Räucher&shy;kurs</span>
+              <span class="time">Online · nächste Runde in Vorbereitung</span>
+            </div>
+            <div class="what">
+              <span class="badge-soft badge-wait">Warteliste</span>
+              <h3 style="margin-top:8px;">Räucherzauber — europäische Räucherkunst</h3>
+              <p>Von der Geschichte über heimische Räucherpflanzen bis zur eigenen Räuchermischung. Schon über 80 glückliche Teilnehmer:innen. Trag dich ein und sei als Erste dabei.</p>
+            </div>
+            <div class="act">
+              <span class="price" style="font-size:var(--step-1);color:var(--ink-faint);">auf Anfrage</span>
+              <a href="#warteliste-kurse" class="btn btn-ghost">Auf die Warteliste</a>
+            </div>
+          </article>
+
+          <!-- WARTELISTE: Naturkosmetik -->
+          <article class="course">
+            <div class="when">
+              <span class="date" style="font-size:var(--step-2);">Natur&shy;kosmetik</span>
+              <span class="time">Termin auf Anfrage</span>
+            </div>
+            <div class="what">
+              <span class="badge-soft badge-wait">Warteliste</span>
+              <h3 style="margin-top:8px;">Naturkosmetik selber rühren</h3>
+              <p>Deo, Salben und Cremes aus reinen Zutaten — mit Aufzeichnung, damit du zuhause weiterrührst.</p>
+            </div>
+            <div class="act">
+              <span class="price" style="font-size:var(--step-1);color:var(--ink-faint);">auf Anfrage</span>
+              <a href="#warteliste-kurse" class="btn btn-ghost">Auf die Warteliste</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="callout reveal d1" style="margin-top:var(--space-4);">
+          <b>Ohne Zwischenhändler.</b> Wenn du einen Platz buchst, läuft die Zahlung direkt und sicher über Stripe an Evelyn — keine Plattform-Gebühr, kein Vermittler. So bleibt der faire Preis dort, wo er hingehört.
+        </div>
+      </div>
+    </section>
+
+    <!-- Kursformate -->
+    <section id="formate" class="paper">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Alle Formate</span>
+          <h2>Womit du bei mir eintauchen kannst</h2>
+        </div>
+        <div class="feature-grid reveal d1">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18M12 8C12 8 7 7 5 3M12 8C12 8 17 7 19 3M12 14C12 14 6 13 4 9"/></svg>
+            <div><b>Kräuterwanderungen</b><span>Wildpflanzen sicher bestimmen, sammeln und verwenden — in Küche und Hausapotheke.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 22c0-6 4-8 4-12M12 22c0-6-4-8-4-12M12 2c1 2 1 4 0 6M9 5c1 2 1 3 0 5M15 5c-1 2-1 3 0 5"/></svg>
+            <div><b>Räucherkurse</b><span>Die europäische Räucherkunst — Geschichte, Techniken, Pflanzen, eigene Mischungen.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="7" y="9" width="10" height="12" rx="2"/><path d="M10 9V6a2 2 0 0 1 4 0v3"/></svg>
+            <div><b>Naturkosmetik</b><span>Salben, Cremes und Deo aus reinen, selbst gesammelten Zutaten.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20V8a8 8 0 0 1 16 0v12M4 14h16M12 4v16"/></svg>
+            <div><b>Wildpflanzen-Weiterbildung</b><span>Materia Medica — vertieftes Pflanzenwissen über Erkennung, Wirkung und Verwendung.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+            <div><b>Mit Wildpflanzen durch's Jahr</b><span>Ein Kurs, der dich einen ganzen Jahreskreis lang durch die Wildpflanzenwelt begleitet.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s-7-4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6-7 10-7 10z"/></svg>
+            <div><b>Blessingway &amp; Wunschformate</b><span>Geburtsvorbereitungsrituale, Naturrituale und individuelle Formate für besondere Anlässe.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Räuchern (Anker von index) -->
+    <section id="raeuchern" class="sand">
+      <div class="wrap split-2">
+        <div class="media-frame portrait reveal">
+          <picture><source type="image/webp" srcset="assets/img/raeuchern-andacht-480.webp 480w, assets/img/raeuchern-andacht-760.webp 760w" sizes="(max-width:900px) 80vw, 420px"><img src="assets/img/raeuchern-andacht-760.jpg" width="760" height="1140" alt="Evelyn hält mit geschlossenen Augen eine rauchende Räucherschale" loading="lazy" decoding="async"></picture>
+        </div>
+        <div class="reveal d1">
+          <span class="eyebrow">Räucherzauber</span>
+          <h2 class="sec-head" style="margin-bottom:var(--space-3);">Die europäische Räucherkunst — für deinen Alltag</h2>
+          <div class="prose">
+            <p>Bisher räucherst du mit Räucherstäbchen, Palo Santo oder weißem Salbei? Dabei wächst vor deiner Haustür eine ganze Welt heimischer Räucherpflanzen. Im Räucherkurs tauchst du ein:</p>
+            <ul>
+              <li>Geschichte der europäischen Räucherkunst</li>
+              <li>Anwendungsgebiete und die passenden Pflanzen dazu</li>
+              <li>Räuchertechniken, Equipment und zuverlässige Bezugsquellen</li>
+              <li>Portraits heimischer Räucherpflanzen</li>
+              <li>Herstellung deiner eigenen Räuchermischung</li>
+            </ul>
+          </div>
+          <div style="margin-top:var(--space-3);"><a href="blog-beifuss-raeuchern.html" class="textlink">Lies vorab: Beifuß räuchern — Anleitung <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stimmen -->
+    <section class="paper">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <span class="eyebrow" style="justify-content:center;">Was Teilnehmer:innen sagen</span>
+          <h2>Von Herzen weiterempfohlen</h2>
+        </div>
+        <div class="voices-grid reveal d1">
+          <figure class="voice">
+            <div class="quote-mark" aria-hidden="true">„</div>
+            <p>Es war eine absolute Bereicherung, endlich sachkundig in das Thema Räuchern einzutauchen. Fragen wurden wunderbar ausführlich beantwortet. Hoffentlich gibt es noch weitere Kurse!</p>
+            <figcaption class="by">Teresa<span>Räucherkurs</span></figcaption>
+          </figure>
+          <figure class="voice">
+            <div class="quote-mark" aria-hidden="true">„</div>
+            <p>Der Workshop hat richtig Lust aufs Herstellen von Kosmetik gemacht — und dank der Aufzeichnung lief auch die Wiederholung zuhause super. Meine Freunde fragen ständig nach dem selbstgemachten Deo.</p>
+            <figcaption class="by">Anne N.<span>Naturkosmetik-Kurs</span></figcaption>
+          </figure>
+          <figure class="voice">
+            <div class="quote-mark" aria-hidden="true">„</div>
+            <p>Dein liebevoller, authentischer Umgang mit den Pflanzen ist einfach faszinierend, inspirierend und motivierend. Wir sehen uns auf jeden Fall wieder!</p>
+            <figcaption class="by">Janina<span>Blessingway</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Warteliste / Newsletter -->
+    <section id="warteliste-kurse" class="sand">
+      <div class="wrap">
+        <div class="news-card reveal">
+          <svg class="news-leaf" viewBox="0 0 200 200" aria-hidden="true" fill="none" stroke="#F1ECDF" stroke-width="1.3"><path d="M100 10v180M100 60C100 60 50 50 40 15M100 60C100 60 150 50 160 15M100 110C100 110 45 100 35 65M100 110C100 110 155 100 165 65"/></svg>
+          <div class="wrap-narrow">
+            <span class="eyebrow" style="justify-content:center;">Kein Termin verpassen</span>
+            <h2>Erfahre als Erste von neuen Terminen</h2>
+            <p>Melde dich zum Newsletter an und erfahre, wann die nächste Kräuterwanderung ansteht und wann Räucher- oder Naturkosmetik-Kurse starten.</p>
+            <form class="news-form" id="newsForm" novalidate>
+              <label for="newsEmail" class="hp">Deine E-Mail-Adresse</label>
+              <input type="email" id="newsEmail" name="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required>
+              <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button type="submit" class="btn btn-gold">Auf die Liste <span class="arr" aria-hidden="true">→</span></button>
+            </form>
+            <p class="form-msg" id="newsMsg" role="status" aria-live="polite"></p>
+            <p class="news-note">Kein Spam, jederzeit abbestellbar. Bestätigungs-Mail (Double-Opt-in). Keine Cookies, kein Tracking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wunschformat CTA -->
+    <section class="cta-band">
+      <svg class="cta-band-leaf" viewBox="0 0 200 200" aria-hidden="true" fill="none" stroke="#F1ECDF" stroke-width="1.3"><path d="M100 190V20M100 65C100 65 55 55 45 22M100 65C100 65 145 55 155 22M100 120C100 120 50 110 40 78M100 120C100 120 150 110 160 78"/></svg>
+      <div class="wrap wrap-narrow">
+        <span class="eyebrow" style="justify-content:center;">Dein Wunschformat</span>
+        <h2>Du hast einen besonderen Anlass?</h2>
+        <p>Du wünschst dir einen Workshop oder ein Naturritual für eine Gruppe, ein Fest oder einen besonderen Moment? Lass uns in einem kostenfreien Gespräch dein Wunschformat planen.</p>
+        <div class="btns"><a href="index.html#kontakt" class="btn btn-gold">Erzähl mir von deinem Wunsch <span class="arr" aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="f-top">
+        <div class="f-about">
+          <a href="index.html" class="wm"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><g stroke="currentColor" stroke-width="1" opacity=".7"><path d="M16 3.5v25M3.5 16h25M7.4 7.4l17.2 17.2M24.6 7.4 7.4 24.6"/></g><circle cx="16" cy="16" r="3" fill="#C89A2C" stroke="none"/></svg>Evelyn Weidner</a>
+          <p>Erdhüterin im Tölzer Oberland. Ich begleite dich zurück in eine tiefe, alltagstaugliche Verbindung mit deiner Landschaft — durch den ganzen Jahreskreis.</p>
+        </div>
+        <div><h4>Angebote</h4><ul>
+          <li><a href="naturverbindung.html">Naturverbindung</a></li>
+          <li><a href="kurse.html">Kurse &amp; Wanderungen</a></li>
+          <li><a href="earth-keepers-journey.html">Earth Keeper's Journey</a></li>
+          <li><a href="gartenberatung.html">Gartenberatung</a></li>
+          <li><a href="doterra.html">Ätherische Öle</a></li>
+        </ul></div>
+        <div><h4>Entdecken</h4><ul>
+          <li><a href="ueber-mich.html">Über mich</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+          <li><a href="https://www.instagram.com/evelyn.naturverbunden" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul></div>
+        <div><h4>Kontakt</h4><ul>
+          <li><a href="mailto:info@evelynweidner.de">info@evelynweidner.de</a></li>
+          <li><a href="tel:+4915753250289">+49 157 5325 0289</a></li>
+          <li>Gaißach bei Bad Tölz</li>
+          <li style="margin-top:8px;"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></li>
+        </ul></div>
+      </div>
+      <div class="f-bottom">
+        <span>© <span id="year">2026</span> Evelyn Weidner · Naturverbindung &amp; Kräuterkunde</span>
+        <span class="made">Handgebaut mit <span style="color:var(--gold-bright);">❧</span> in Landsberg am Lech</span>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/site.js" defer></script>
+  <script>
+  // Demo: Buchungs-Button zeigt Hinweis statt eines echten Stripe-Checkouts (Vorschau).
+  document.querySelectorAll('[data-demo-buy]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var note=a.parentNode.querySelector('.buy-note');
+      if(note){note.textContent='Demo — im Live-Betrieb öffnet hier direkt der sichere Stripe-Checkout.';note.style.color='#B06A3C';note.style.fontWeight='700';}
+    });
+  });
+  </script>
+</body>
+</html>
