@@ -88,8 +88,8 @@
   .btn-gold:hover{background:var(--gold-bright);}
   .btn-ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line);box-shadow:none;font-weight:600;}
   .btn-ghost:hover{background:rgba(18,51,33,.05);border-color:rgba(18,51,33,.4);box-shadow:none;transform:translateY(-2px);}
-  .forest .btn-ghost{color:var(--on-forest);border-color:rgba(241,236,223,.3);}
-  .forest .btn-ghost:hover{background:rgba(241,236,223,.08);border-color:rgba(241,236,223,.55);}
+  .forest .btn-ghost,.cta-band .btn-ghost,.news-card .btn-ghost{color:var(--on-forest);border-color:rgba(241,236,223,.34);}
+  .forest .btn-ghost:hover,.cta-band .btn-ghost:hover,.news-card .btn-ghost:hover{background:rgba(241,236,223,.1);border-color:rgba(241,236,223,.6);color:var(--paper);}
   .textlink{font-weight:700;color:var(--forest);display:inline-flex;align-items:center;gap:7px;border-bottom:1.5px solid var(--gold);padding-bottom:2px;transition:gap .25s var(--ease),color .2s;}
   .textlink:hover{gap:11px;color:var(--moss);}
   .forest .textlink{color:var(--gold-bright);border-color:var(--gold);}
