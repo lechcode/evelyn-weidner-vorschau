@@ -22,7 +22,7 @@
   var ANGLES = [-90,-45,0,45,90,135,180,225]; // Julfest oben, im Uhrzeigersinn
   function polar(cx,cy,r,deg){var a=deg*Math.PI/180;return [cx+r*Math.cos(a), cy+r*Math.sin(a)];}
 
-  (function buildWheel(){
+  try{ (function buildWheel(){
     var spokes=document.getElementById('wheelSpokes'), nodes=document.getElementById('wheelNodes');
     var seasonNodes=document.getElementById('seasonNodes');
     // aktuelle Station IMMER bestimmen (auch ohne Rad — für die Karten-Texte)
@@ -70,10 +70,10 @@
       var mkr=document.getElementById('wheelMarker');
       if(mkr){mkr.setAttribute('cx',mp[0]);mkr.setAttribute('cy',mp[1]);}
     }
-  })();
+  })(); }catch(_ew){ if(window.console&&console.warn)console.warn('Jahresrad übersprungen:',_ew); }
 
   /* ---- Reveals ---- */
-  (function(){
+  try{ (function(){
     var els=[].slice.call(document.querySelectorAll('.reveal'));
     if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       els.forEach(function(e){e.classList.add('in');});
@@ -86,12 +86,13 @@
     els.forEach(function(e){io.observe(e);});
     var w=document.getElementById('wheel');
     if(w){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){w.classList.add('drawn');io2.disconnect();}});},{threshold:.2});io2.observe(w);}
-  })();
+  })(); }catch(_er){ /* Reveals fehlgeschlagen -> Inhalte trotzdem zeigen */ document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');}); }
 
-  /* ---- Nav scrolled + Burger ---- */
+  /* ---- Nav scrolled + Burger (läuft IMMER, unabhängig vom obigen) ---- */
   (function(){
     var nav=document.getElementById('nav'), tog=document.getElementById('navToggle'), menu=document.getElementById('mobileMenu');
-    addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>12);},{passive:true});
+    if(!tog||!menu) return;
+    if(nav)addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>12);},{passive:true});
     function close(){menu.classList.remove('open');tog.setAttribute('aria-expanded','false');tog.setAttribute('aria-label','Menü öffnen');document.body.style.overflow='';}
     function open(){menu.classList.add('open');tog.setAttribute('aria-expanded','true');tog.setAttribute('aria-label','Menü schließen');document.body.style.overflow='hidden';}
     tog.addEventListener('click',function(){menu.classList.contains('open')?close():open();});
@@ -101,6 +102,7 @@
 
   /* ---- Formulare (Demo) ---- */
   function fakeSubmit(form,msg,okText){
+    if(!form) return;
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var m=document.getElementById(msg);
@@ -114,4 +116,4 @@
   }
   fakeSubmit(document.getElementById('contactForm'),'contactMsg','Deine Nachricht ist unterwegs — bis wir uns hören, hör mal, was draußen wächst. 🌿 (Demo: es wird noch nichts versendet.)');
   fakeSubmit(document.getElementById('newsForm'),'newsMsg','Schön, dass du dabei bist! Im Live-Betrieb bekommst du jetzt eine Bestätigungs-Mail. 🌾');
-  document.getElementById('year').textContent=new Date().getFullYear();
+  var _yr=document.getElementById('year'); if(_yr)_yr.textContent=new Date().getFullYear();
