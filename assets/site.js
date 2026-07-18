@@ -25,66 +25,10 @@
   (function buildWheel(){
     var spokes=document.getElementById('wheelSpokes'), nodes=document.getElementById('wheelNodes');
     var seasonNodes=document.getElementById('seasonNodes');
-    if(!nodes && !seasonNodes) return;   // keins der Räder auf dieser Seite -> raus (Texte trotzdem unten guarded)
-    var NS="http://www.w3.org/2000/svg";
-    for(var i=0;i<8;i++){
-      var pn=polar(150,150,120,ANGLES[i]);
-      // Hero-Rad (optional — nur wenn vorhanden)
-      if(nodes && spokes){
-        var ln=document.createElementNS(NS,'line');
-        ln.setAttribute('class','spoke');ln.setAttribute('x1',150);ln.setAttribute('y1',150);
-        ln.setAttribute('x2',pn[0]);ln.setAttribute('y2',pn[1]);ln.setAttribute('style','--dash:130');
-        spokes.appendChild(ln);
-        var g=document.createElementNS(NS,'g');g.setAttribute('class','feast-node');g.setAttribute('data-i',i);
-        var c=document.createElementNS(NS,'circle');c.setAttribute('class','node');
-        c.setAttribute('cx',pn[0]);c.setAttribute('cy',pn[1]);c.setAttribute('r',3.6);
-        g.appendChild(c);
-        var t=document.createElementNS(NS,'text');t.setAttribute('class','node-label');
-        var lo=polar(150,150,131,ANGLES[i]);
-        t.setAttribute('x',lo[0]);t.setAttribute('y',lo[1]+2);
-        t.setAttribute('text-anchor', ANGLES[i]===-90||ANGLES[i]===90?'middle':(Math.cos(ANGLES[i]*Math.PI/180)<0?'end':'start'));
-        t.textContent=FEASTS[i].name;
-        g.appendChild(t);
-        nodes.appendChild(g);
-      }
-      // Jahreskreis-Sektion-Rad — Knoten mit Fest-Namen
-      if(seasonNodes){
-        var p2=polar(150,150,96,ANGLES[i]);
-        var c2=document.createElementNS(NS,'circle');
-        c2.setAttribute('cx',p2[0]);c2.setAttribute('cy',p2[1]);c2.setAttribute('r',4);
-        c2.setAttribute('fill','#F5EFE2');c2.setAttribute('stroke','#3B4023');c2.setAttribute('stroke-width','1.2');
-        c2.setAttribute('data-si',i);
-        seasonNodes.appendChild(c2);
-        var lo2=polar(150,150,116,ANGLES[i]);
-        var t2=document.createElementNS(NS,'text');
-        t2.setAttribute('x',lo2[0]);t2.setAttribute('y',lo2[1]+2.5);
-        t2.setAttribute('font-family','Mulish, sans-serif');t2.setAttribute('font-size','7.2');
-        t2.setAttribute('font-weight','700');t2.setAttribute('letter-spacing','.04em');
-        t2.setAttribute('fill','#4E5344');
-        t2.setAttribute('text-anchor', ANGLES[i]===-90||ANGLES[i]===90?'middle':(Math.cos(ANGLES[i]*Math.PI/180)<0?'end':'start'));
-        t2.textContent=FEASTS[i].sub;
-        seasonNodes.appendChild(t2);
-      }
-    }
-    // aktuelle Jahreszeit = die zuletzt BEGONNENE Station (Phase, in der wir stehen — nicht die nächstliegende)
+    // aktuelle Station IMMER bestimmen (auch ohne Rad — für die Karten-Texte)
     var now=new Date();
     var frac=now.getMonth()+ (now.getDate()-1)/31; // 0..11.x
-    var best=0; // Julfest (month 11.83) trägt die Tiefwinter-Phase Ende Dez–Lichtmess
-    for(var k=0;k<8;k++){ if(FEASTS[k].month<=frac) best=k; }
-    // Hero-Rad Marker + Hervorhebung (nur wenn Hero-Rad vorhanden)
-    if(nodes){
-      var mAngle=ANGLES[best];
-      var mp=polar(150,150,120,mAngle);
-      var mk=document.getElementById('wheelMarker');
-      if(mk){mk.setAttribute('cx',mp[0]);mk.setAttribute('cy',mp[1]);}
-      var gs=nodes.querySelectorAll('.feast-node');
-      if(gs[best])gs[best].setAttribute('class','feast-node season-now');
-    }
-    if(seasonNodes){
-      var sc=seasonNodes.querySelector('[data-si="'+best+'"]');
-      if(sc){sc.setAttribute('fill','#C0532F');sc.setAttribute('stroke','#C0532F');sc.setAttribute('r','6');}
-    }
-    // Texte setzen
+    var best=0; for(var k=0;k<8;k++){ if(FEASTS[k].month<=frac) best=k; }
     var f=FEASTS[best];
     var bs=document.getElementById('badgeSeason'), bf=document.getElementById('badgeFeast');
     if(bs)bs.textContent=f.season; if(bf)bf.textContent=f.name;
@@ -92,6 +36,40 @@
     if(sn)sn.textContent='Gerade jetzt · '+f.season;
     if(st)st.textContent=f.title;
     if(sx)sx.textContent=f.text;
+    if(!nodes && !seasonNodes) return;   // kein Rad auf dieser Seite -> Texte sind gesetzt, fertig
+    var NS="http://www.w3.org/2000/svg";
+    function mk(tag,a){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);return e;}
+    function anchorFor(deg){return (deg===-90||deg===90)?'middle':(Math.cos(deg*Math.PI/180)<0?'end':'start');}
+    for(var i=0;i<8;i++){
+      var cur=(i===best);
+      // Hero-Rad (optional — Legacy, nur wenn vorhanden)
+      if(nodes && spokes){
+        var pn=polar(150,150,120,ANGLES[i]);
+        spokes.appendChild(mk('line',{'class':'spoke',x1:150,y1:150,x2:pn[0],y2:pn[1],style:'--dash:130'}));
+        var g=mk('g',{'class':cur?'feast-node season-now':'feast-node','data-i':i});
+        g.appendChild(mk('circle',{'class':'node',cx:pn[0],cy:pn[1],r:3.6}));
+        var lo=polar(150,150,131,ANGLES[i]);
+        var t=mk('text',{'class':'node-label',x:lo[0],y:lo[1]+2,'text-anchor':anchorFor(ANGLES[i])});
+        t.textContent=FEASTS[i].name; g.appendChild(t);
+        nodes.appendChild(g);
+      }
+      // Jahresrad-Sektion (premium, viewBox 400) — Knoten auf dem Farb-Band + Fest-Label
+      if(seasonNodes){
+        var p2=polar(200,200,136,ANGLES[i]);
+        if(cur) seasonNodes.appendChild(mk('circle',{cx:p2[0],cy:p2[1],r:16,fill:'#C0532F',opacity:'.16'}));
+        seasonNodes.appendChild(mk('circle',{cx:p2[0],cy:p2[1],r:cur?9:6.5,fill:cur?'#C0532F':'#F5EFE2',stroke:cur?'#C0532F':'#3B4023','stroke-width':1.4}));
+        var lo2=polar(200,200,174,ANGLES[i]);
+        var t2=mk('text',{x:lo2[0],y:lo2[1]+3.5,'font-family':'Mulish, sans-serif','font-size':cur?12:11,'font-weight':cur?800:700,'letter-spacing':'.03em',fill:cur?'#8A3418':'#4E5344','text-anchor':anchorFor(ANGLES[i])});
+        t2.textContent=FEASTS[i].name;
+        seasonNodes.appendChild(t2);
+      }
+    }
+    // Hero-Rad Marker (Legacy, guarded)
+    if(nodes){
+      var mp=polar(150,150,120,ANGLES[best]);
+      var mkr=document.getElementById('wheelMarker');
+      if(mkr){mkr.setAttribute('cx',mp[0]);mkr.setAttribute('cy',mp[1]);}
+    }
   })();
 
   /* ---- Reveals ---- */

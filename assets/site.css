@@ -179,8 +179,9 @@
   .announce .wrap{display:flex;align-items:center;justify-content:center;gap:11px;padding:9px 0;flex-wrap:wrap;text-align:center;}
   .announce span.txt{font-size:13px;letter-spacing:.02em;color:var(--on-forest-dim);}
   .announce .dot{width:5px;height:5px;border-radius:50%;background:var(--terra);flex:none;}
-  .announce a{color:#EBC0A8;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+  .announce a{color:#EBC0A8;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;white-space:nowrap;}
   .announce a:hover{color:#F4D8C7;border-color:#EBC0A8;}
+  .announce .a-sm{display:none;}
 
   /* Botanische Linien-Overlays (Terrakotta, halbtransparent) — die Xálish-Signatur */
   .botanik{position:absolute;pointer-events:none;z-index:0;color:var(--terra-line);opacity:.45;}
@@ -411,6 +412,13 @@
     .fb-media{order:-1;max-width:340px;aspect-ratio:5/5;}
     .feature-band.reverse .fb-media{order:-1;}
     .botanik{opacity:.3 !important;}
+  }
+  @media (max-width:600px){
+    /* Ankündigungsleiste kompakt: 1 Zeile statt 3 (war ~112px hoch) */
+    .announce .wrap{gap:9px;padding:7px 0;flex-wrap:nowrap;}
+    .announce .a-lg{display:none;} .announce .a-sm{display:inline;}
+    .announce span.txt{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+    .announce a{font-size:11.5px;flex:none;}
   }
   @media (max-width:540px){
     .trust-grid{grid-template-columns:repeat(2,1fr);}
