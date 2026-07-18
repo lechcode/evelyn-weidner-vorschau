@@ -25,33 +25,34 @@
   (function buildWheel(){
     var spokes=document.getElementById('wheelSpokes'), nodes=document.getElementById('wheelNodes');
     var seasonNodes=document.getElementById('seasonNodes');
-    if(!nodes) return;
+    if(!nodes && !seasonNodes) return;   // keins der Räder auf dieser Seite -> raus (Texte trotzdem unten guarded)
     var NS="http://www.w3.org/2000/svg";
     for(var i=0;i<8;i++){
       var pn=polar(150,150,120,ANGLES[i]);
-      // spoke
-      var ln=document.createElementNS(NS,'line');
-      ln.setAttribute('class','spoke');ln.setAttribute('x1',150);ln.setAttribute('y1',150);
-      ln.setAttribute('x2',pn[0]);ln.setAttribute('y2',pn[1]);ln.setAttribute('style','--dash:130');
-      spokes.appendChild(ln);
-      // node group (hero wheel)
-      var g=document.createElementNS(NS,'g');g.setAttribute('class','feast-node');g.setAttribute('data-i',i);
-      var c=document.createElementNS(NS,'circle');c.setAttribute('class','node');
-      c.setAttribute('cx',pn[0]);c.setAttribute('cy',pn[1]);c.setAttribute('r',3.6);
-      g.appendChild(c);
-      var t=document.createElementNS(NS,'text');t.setAttribute('class','node-label');
-      var lo=polar(150,150,131,ANGLES[i]);
-      t.setAttribute('x',lo[0]);t.setAttribute('y',lo[1]+2);
-      t.setAttribute('text-anchor', ANGLES[i]===-90||ANGLES[i]===90?'middle':(Math.cos(ANGLES[i]*Math.PI/180)<0?'end':'start'));
-      t.textContent=FEASTS[i].name;
-      g.appendChild(t);
-      nodes.appendChild(g);
-      // season wheel (right sektion) — simpler nodes with feast names
+      // Hero-Rad (optional — nur wenn vorhanden)
+      if(nodes && spokes){
+        var ln=document.createElementNS(NS,'line');
+        ln.setAttribute('class','spoke');ln.setAttribute('x1',150);ln.setAttribute('y1',150);
+        ln.setAttribute('x2',pn[0]);ln.setAttribute('y2',pn[1]);ln.setAttribute('style','--dash:130');
+        spokes.appendChild(ln);
+        var g=document.createElementNS(NS,'g');g.setAttribute('class','feast-node');g.setAttribute('data-i',i);
+        var c=document.createElementNS(NS,'circle');c.setAttribute('class','node');
+        c.setAttribute('cx',pn[0]);c.setAttribute('cy',pn[1]);c.setAttribute('r',3.6);
+        g.appendChild(c);
+        var t=document.createElementNS(NS,'text');t.setAttribute('class','node-label');
+        var lo=polar(150,150,131,ANGLES[i]);
+        t.setAttribute('x',lo[0]);t.setAttribute('y',lo[1]+2);
+        t.setAttribute('text-anchor', ANGLES[i]===-90||ANGLES[i]===90?'middle':(Math.cos(ANGLES[i]*Math.PI/180)<0?'end':'start'));
+        t.textContent=FEASTS[i].name;
+        g.appendChild(t);
+        nodes.appendChild(g);
+      }
+      // Jahreskreis-Sektion-Rad — Knoten mit Fest-Namen
       if(seasonNodes){
         var p2=polar(150,150,96,ANGLES[i]);
         var c2=document.createElementNS(NS,'circle');
         c2.setAttribute('cx',p2[0]);c2.setAttribute('cy',p2[1]);c2.setAttribute('r',4);
-        c2.setAttribute('fill','#F5EFE2');c2.setAttribute('stroke','#123321');c2.setAttribute('stroke-width','1.2');
+        c2.setAttribute('fill','#F5EFE2');c2.setAttribute('stroke','#3B4023');c2.setAttribute('stroke-width','1.2');
         c2.setAttribute('data-si',i);
         seasonNodes.appendChild(c2);
         var lo2=polar(150,150,116,ANGLES[i]);
@@ -70,17 +71,18 @@
     var frac=now.getMonth()+ (now.getDate()-1)/31; // 0..11.x
     var best=0; // Julfest (month 11.83) trägt die Tiefwinter-Phase Ende Dez–Lichtmess
     for(var k=0;k<8;k++){ if(FEASTS[k].month<=frac) best=k; }
-    // Marker exakt positionieren (interpoliert zwischen Stationen)
-    var mAngle=ANGLES[best];
-    var mp=polar(150,150,120,mAngle);
-    var mk=document.getElementById('wheelMarker');
-    if(mk){mk.setAttribute('cx',mp[0]);mk.setAttribute('cy',mp[1]);}
-    // Hero-Node hervorheben
-    var gs=nodes.querySelectorAll('.feast-node');
-    if(gs[best])gs[best].setAttribute('class','feast-node season-now');
+    // Hero-Rad Marker + Hervorhebung (nur wenn Hero-Rad vorhanden)
+    if(nodes){
+      var mAngle=ANGLES[best];
+      var mp=polar(150,150,120,mAngle);
+      var mk=document.getElementById('wheelMarker');
+      if(mk){mk.setAttribute('cx',mp[0]);mk.setAttribute('cy',mp[1]);}
+      var gs=nodes.querySelectorAll('.feast-node');
+      if(gs[best])gs[best].setAttribute('class','feast-node season-now');
+    }
     if(seasonNodes){
       var sc=seasonNodes.querySelector('[data-si="'+best+'"]');
-      if(sc){sc.setAttribute('fill','#C89A2C');sc.setAttribute('stroke','#C89A2C');sc.setAttribute('r','6');}
+      if(sc){sc.setAttribute('fill','#C0532F');sc.setAttribute('stroke','#C0532F');sc.setAttribute('r','6');}
     }
     // Texte setzen
     var f=FEASTS[best];

@@ -1,16 +1,17 @@
 /* Evelyn Weidner — gemeinsames Design-System (Tokens, Nav, Footer, Komponenten).
    Lokal gehostet, kein externer Request. Von ALLEN Seiten geladen. */
-  /* ═══════ 1 · TOKENS — „Jahreskreis": Waldgrün + Senf-Gold + Creme (Evelyns Branding gemessen) ═══════ */
+  /* ═══════ 1 · TOKENS — „Xálish": Tief-Olive + Creme + Terrakotta (Evelyns Branding, wärmer gestimmt) ═══════ */
   :root{
-    /* Grün-Familie */
-    --forest:#123321; --forest-deep:#0A2514; --forest-2:#1C4430; --moss:#7F9241; --moss-soft:#A9B87E;
+    /* Grün-Familie — warmes Tief-Olive (Xálish-Dunkelflächen), Evelyns Waldgrün wärmer gezogen */
+    --forest:#3B4023; --forest-deep:#2C3019; --forest-2:#4A5130; --moss:#7F9241; --moss-soft:#A9B87E;
     /* Creme / Papier */
     --cream:#F5EFE2; --sand:#EBE3D2; --paper:#FBF7EE; --sand-deep:#E1D6C0;
-    /* Akzente */
-    --gold:#C89A2C; --gold-bright:#E0B441; --gold-soft:#EBD9A6; --terra:#B06A3C; --terra-soft:#D9B49B;
+    /* Akzente — Terrakotta jetzt PRIMÄR (CTA + Linien), Gold degradiert zur sparsamen Wärme */
+    --terra:#C0532F; --terra-deep:#A5401F; --terra-line:#C46A45; --terra-soft:#E8C9B4; --terra-ink:#8A3418;
+    --gold:#C89A2C; --gold-bright:#E0B441; --gold-soft:#EBD9A6;
     /* Text */
-    --ink:#25281F; --ink-soft:#4E5344; --ink-faint:#6B7060; --on-forest:#F1ECDF; --on-forest-dim:#C4CBB4;
-    --line:rgba(37,40,31,.14); --line-d:rgba(241,236,223,.16);
+    --ink:#262a1c; --ink-soft:#4E5344; --ink-faint:#6B7060; --on-forest:#F1ECDF; --on-forest-dim:#C9CDB6;
+    --line:rgba(38,42,28,.14); --line-d:rgba(241,236,223,.16);
 
     --serif:"Cormorant Garamond","Cormorant Garamond Fallback",Georgia,"Times New Roman",serif;
     --sans:"Mulish","Mulish Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
@@ -35,10 +36,10 @@
     --space-5:clamp(46px, 5.6vw, 68px);
     --space-6:clamp(64px, 9.5vw, 128px);
 
-    --shadow:0 1px 0 rgba(255,255,255,.5), 0 2px 8px -4px rgba(18,51,33,.14), 0 30px 60px -34px rgba(18,51,33,.3);
-    --shadow-lg:0 2px 10px -5px rgba(18,51,33,.2), 0 44px 80px -50px rgba(10,37,20,.55);
+    --shadow:0 1px 0 rgba(255,255,255,.5), 0 2px 8px -4px rgba(44,48,25,.16), 0 30px 60px -34px rgba(44,48,25,.32);
+    --shadow-lg:0 2px 10px -5px rgba(44,48,25,.22), 0 44px 80px -50px rgba(30,33,15,.58);
     --ease:cubic-bezier(.22,.61,.36,1);
-    --focus:0 0 0 3px rgba(200,154,44,.5);
+    --focus:0 0 0 3px rgba(192,83,47,.5);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px);-webkit-text-size-adjust:100%;overflow-x:clip;}
@@ -48,7 +49,7 @@
   img,svg{display:block;max-width:100%;}
   picture{display:block;}
   .wheel-photo picture,.hero-figure picture,.offer .media picture,.smoke-figure picture,.post .media picture{display:block;width:100%;height:100%;}
-  ::selection{background:rgba(200,154,44,.26);}
+  ::selection{background:rgba(192,83,47,.2);}
   :focus-visible{outline:none;box-shadow:var(--focus);border-radius:6px;}
 
   .wrap{width:min(1140px,92vw);margin-inline:auto;}
@@ -67,32 +68,38 @@
   .forest h1,.forest h2,.forest h3,.forest h4{color:var(--paper);}
   .forest .sec-head p,.forest .lead{color:var(--on-forest-dim);}
 
-  .eyebrow{font-family:var(--sans);font-weight:800;font-size:var(--step--1);letter-spacing:var(--ls-label);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;color:var(--forest-2);}
-  .eyebrow::before{content:"";width:20px;height:1.5px;background:var(--gold);flex:none;}
-  .forest .eyebrow,.news-card .eyebrow,.cta-band .eyebrow{color:var(--gold-bright);}
+  .eyebrow{font-family:var(--sans);font-weight:800;font-size:var(--step--1);letter-spacing:var(--ls-label);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;color:var(--terra-ink);}
+  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--terra);flex:none;}
+  .forest .eyebrow,.news-card .eyebrow,.cta-band .eyebrow,.hero--photo .eyebrow{color:var(--terra-line);}
+  .forest .eyebrow::before,.news-card .eyebrow::before,.cta-band .eyebrow::before,.hero--photo .eyebrow::before{background:var(--terra-line);}
 
   .lead{font-size:var(--step-1);line-height:var(--lh-relaxed);color:var(--ink-soft);}
 
-  /* Buttons */
+  /* Buttons — Terrakotta-Primär, abgerundetes Rechteck (Xálish) */
   .btn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;
-    background:var(--forest);color:var(--paper);
-    font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.01em;
-    padding:15px 27px;border-radius:var(--radius-pill);
-    box-shadow:0 14px 26px -14px rgba(10,37,20,.6);
+    background:var(--terra);color:#FCF6EC;
+    font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.02em;
+    padding:15px 28px;border-radius:8px;
+    box-shadow:0 14px 26px -14px rgba(138,52,24,.62);
     transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);white-space:nowrap;}
-  .btn:hover{transform:translateY(-2px);background:var(--forest-2);box-shadow:0 20px 34px -16px rgba(10,37,20,.7);}
+  .btn:hover{transform:translateY(-2px);background:var(--terra-deep);box-shadow:0 20px 34px -16px rgba(138,52,24,.72);}
   .btn:active{transform:translateY(0);transition-duration:.08s;}
   .btn .arr{transition:transform .28s var(--ease);}
   .btn:hover .arr{transform:translateX(4px);}
-  .btn-gold{background:var(--gold);color:var(--forest-deep);box-shadow:0 14px 26px -14px rgba(200,154,44,.7);}
-  .btn-gold:hover{background:var(--gold-bright);}
-  .btn-ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line);box-shadow:none;font-weight:600;}
-  .btn-ghost:hover{background:rgba(18,51,33,.05);border-color:rgba(18,51,33,.4);box-shadow:none;transform:translateY(-2px);}
-  .forest .btn-ghost,.cta-band .btn-ghost,.news-card .btn-ghost{color:var(--on-forest);border-color:rgba(241,236,223,.34);}
-  .forest .btn-ghost:hover,.cta-band .btn-ghost:hover,.news-card .btn-ghost:hover{background:rgba(241,236,223,.1);border-color:rgba(241,236,223,.6);color:var(--paper);}
-  .textlink{font-weight:700;color:var(--forest);display:inline-flex;align-items:center;gap:7px;border-bottom:1.5px solid var(--gold);padding-bottom:2px;transition:gap .25s var(--ease),color .2s;}
-  .textlink:hover{gap:11px;color:var(--moss);}
-  .forest .textlink{color:var(--gold-bright);border-color:var(--gold);}
+  /* .btn-gold-Alias bleibt aus Kompatibilität, ist jetzt Terrakotta wie der Primär-Button */
+  .btn-gold{background:var(--terra);color:#FCF6EC;box-shadow:0 14px 26px -14px rgba(138,52,24,.62);}
+  .btn-gold:hover{background:var(--terra-deep);}
+  /* helle Variante für dunkle Flächen (Xálish' Creme-Buttons auf Olive) */
+  .btn-cream{background:var(--paper);color:var(--forest-deep);box-shadow:0 14px 26px -14px rgba(30,33,15,.5);}
+  .btn-cream:hover{background:#fff;color:var(--terra-deep);}
+  .btn-ghost{background:transparent;color:var(--forest-deep);border:1.5px solid rgba(38,42,28,.28);box-shadow:none;font-weight:600;}
+  .btn-ghost:hover{background:rgba(38,42,28,.05);border-color:rgba(38,42,28,.5);box-shadow:none;transform:translateY(-2px);}
+  .forest .btn-ghost,.cta-band .btn-ghost,.news-card .btn-ghost,.hero--photo .btn-ghost{color:var(--on-forest);border-color:rgba(241,236,223,.4);}
+  .forest .btn-ghost:hover,.cta-band .btn-ghost:hover,.news-card .btn-ghost:hover,.hero--photo .btn-ghost:hover{background:rgba(241,236,223,.12);border-color:rgba(241,236,223,.7);color:var(--paper);}
+  .textlink{font-weight:700;color:var(--terra-ink);display:inline-flex;align-items:center;gap:7px;border-bottom:1.5px solid var(--terra);padding-bottom:2px;transition:gap .25s var(--ease),color .2s,border-color .2s;}
+  .textlink:hover{gap:11px;color:var(--terra-deep);border-color:var(--terra-deep);}
+  .forest .textlink,.hero--photo .textlink{color:var(--terra-line);border-color:var(--terra-line);}
+  .forest .textlink:hover,.hero--photo .textlink:hover{color:#E7A585;border-color:#E7A585;}
 
   /* Wortmarke */
   .wm{display:inline-flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.01em;line-height:1;color:var(--forest-deep);}
@@ -106,7 +113,7 @@
   .nav .wm{font-size:19px;} .nav .wm svg{width:26px;height:26px;}
   .nav-links{display:flex;align-items:center;gap:28px;}
   .nav-links a:not(.btn){font-size:14.5px;font-weight:600;color:var(--ink-soft);position:relative;padding:5px 0;transition:color .2s var(--ease);}
-  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-1px;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .25s var(--ease);}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-1px;width:0;height:2px;background:var(--terra);border-radius:2px;transition:width .25s var(--ease);}
   .nav-links a:not(.btn):hover{color:var(--forest);}
   .nav-links a:not(.btn):hover::after,.nav-links a.active::after{width:100%;}
   .nav-links a.active{color:var(--forest);}
@@ -123,7 +130,7 @@
     opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s;}
   .mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0);}
   .mobile-menu a{font-family:var(--serif);font-size:clamp(28px,8vw,42px);font-weight:600;color:var(--paper);padding:9px 0;border-bottom:1px solid var(--line-d);display:flex;align-items:center;justify-content:space-between;}
-  .mobile-menu a .num{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--gold-bright);letter-spacing:.1em;}
+  .mobile-menu a .num{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--terra-line);letter-spacing:.1em;}
   .mobile-menu .mm-cta{margin-top:var(--space-4);border:none;}
 
   /* ═══════ 3 · HERO — Jahresrad ═══════ */
@@ -164,6 +171,79 @@
   /* dezente Kräuter-Marke im Hintergrund */
   .hero-leaf{position:absolute;pointer-events:none;z-index:0;opacity:.5;}
   .hero-leaf.l1{top:8%;left:-40px;width:150px;transform:rotate(-12deg);}
+
+  /* ═══════ XÁLISH-KOMPONENTEN ═══════ */
+
+  /* Ankündigungsleiste (ganz oben, über der Nav) */
+  .announce{background:var(--forest-deep);color:var(--on-forest);}
+  .announce .wrap{display:flex;align-items:center;justify-content:center;gap:11px;padding:9px 0;flex-wrap:wrap;text-align:center;}
+  .announce span.txt{font-size:13px;letter-spacing:.02em;color:var(--on-forest-dim);}
+  .announce .dot{width:5px;height:5px;border-radius:50%;background:var(--terra);flex:none;}
+  .announce a{color:#EBC0A8;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+  .announce a:hover{color:#F4D8C7;border-color:#EBC0A8;}
+
+  /* Botanische Linien-Overlays (Terrakotta, halbtransparent) — die Xálish-Signatur */
+  .botanik{position:absolute;pointer-events:none;z-index:0;color:var(--terra-line);opacity:.45;}
+  .botanik svg,.botanik img{width:100%;height:auto;display:block;overflow:visible;}
+  .botanik svg [fill="none"],.botanik path,.botanik line,.botanik circle{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+  .forest .botanik{opacity:.4;} .botanik.soft{opacity:.28;} .botanik.strong{opacity:.6;}
+
+  /* Bogen-Bild (Kathedralenfenster-Silhouette) */
+  .arch{border-radius:48% 48% var(--radius-lg) var(--radius-lg) / 40% 40% var(--radius-lg) var(--radius-lg);overflow:hidden;}
+  .smoke-figure.arch,.fb-media.arch{border-radius:48% 48% var(--radius-lg) var(--radius-lg) / 40% 40% var(--radius-lg) var(--radius-lg);}
+
+  /* Bullet-Tagline (Xálish „Plant Medicine • Earth Wisdom • …") */
+  .tagline{font-family:var(--sans);font-weight:800;font-size:var(--step--1);letter-spacing:.15em;text-transform:uppercase;display:flex;gap:13px;align-items:center;flex-wrap:wrap;color:var(--terra-ink);}
+  .tagline.center{justify-content:center;}
+  .tagline .sep{color:var(--terra);font-size:1.1em;line-height:0;}
+
+  /* ═══════ FOTO-HERO (Vollbild, zentriert) ═══════ */
+  .hero--photo{position:relative;isolation:isolate;overflow:hidden;display:grid;align-items:center;
+    min-height:clamp(560px,90vh,880px);padding:calc(var(--nav-h) + 7vh) 0 12vh;}
+  .hero--photo .hero-media{position:absolute;inset:0;z-index:-2;}
+  .hero--photo .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;}
+  .hero--photo .hero-scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(179deg, rgba(30,34,18,.56) 0%, rgba(30,34,18,.2) 26%, rgba(30,34,18,.4) 56%, rgba(22,25,11,.72) 100%),
+    radial-gradient(78% 66% at 50% 52%, transparent 26%, rgba(26,29,13,.5));}
+  .hero--photo .botanik{z-index:0;}
+  .hero--photo .hero-inner{position:relative;z-index:1;width:min(760px,92vw);margin-inline:auto;text-align:center;}
+  .hero--photo .tagline{justify-content:center;color:rgba(252,246,236,.94);text-shadow:0 1px 14px rgba(30,33,15,.5);}
+  .hero--photo .tagline .sep{color:var(--terra-line);}
+  .hero--photo h1{color:#FCF6EC;font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:var(--step-5);line-height:1.02;letter-spacing:.004em;max-width:18ch;margin:var(--space-3) auto var(--space-3);
+    text-shadow:0 2px 34px rgba(24,27,12,.55),0 1px 3px rgba(24,27,12,.4);}
+  .hero--photo .hero-sub{color:rgba(252,246,236,.92);font-size:var(--step-1);line-height:var(--lh-relaxed);
+    max-width:50ch;margin:0 auto var(--space-4);text-shadow:0 1px 16px rgba(24,27,12,.5);}
+  .hero--photo .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;}
+  .hero--photo .scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:1;
+    display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(252,246,236,.82);
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;}
+  .hero--photo .scroll-cue svg{width:20px;height:20px;animation:cueBob 2.4s var(--ease) infinite;}
+  @keyframes cueBob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+  /* ═══════ FEATURE-BAND (Creme-Card + Arch-Foto auf Olive/Foto) ═══════ */
+  .feature-band{position:relative;overflow:hidden;}
+  .fb-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;position:relative;z-index:1;}
+  .feature-band.reverse .fb-media{order:-1;}
+  .fb-card{background:var(--paper);border-radius:var(--radius-lg);padding:clamp(28px,3.6vw,54px);box-shadow:var(--shadow-lg);position:relative;}
+  .forest .fb-card h2,.forest .fb-card h3{color:var(--forest-deep);}
+  .fb-card .lead,.fb-card p{color:var(--ink-soft);}
+  .fb-media{position:relative;justify-self:center;width:100%;max-width:440px;aspect-ratio:4/5;box-shadow:var(--shadow-lg);}
+  .fb-media picture{display:block;width:100%;height:100%;}
+  .fb-media img{width:100%;height:100%;object-fit:cover;}
+
+  /* ═══════ FOTO-NEWSLETTER (über Foto, zentriert) ═══════ */
+  .news--photo{position:relative;overflow:hidden;isolation:isolate;color:var(--on-forest);text-align:center;}
+  .news--photo .news-media{position:absolute;inset:0;z-index:-2;}
+  .news--photo .news-media img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;}
+  .news--photo .news-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(38,42,24,.74),rgba(30,33,15,.84));}
+  .news--photo .botanik{z-index:0;}
+  .news--photo .wrap-narrow{position:relative;z-index:1;}
+  .news--photo h2{color:#FCF6EC;font-size:var(--step-4);}
+  .news--photo .eyebrow{color:var(--terra-line);justify-content:center;}
+  .news--photo .eyebrow::before{background:var(--terra-line);}
+  .news--photo p{color:rgba(252,246,236,.9);font-size:var(--step-1);margin-top:14px;line-height:var(--lh-relaxed);}
+  .news--photo .news-note{font-size:12.5px;color:rgba(252,246,236,.72);}
 
   /* ═══════ Bänder / Marquee-Werte ═══════ */
   .trust{background:var(--forest);color:var(--on-forest);}
@@ -233,7 +313,7 @@
   /* ═══════ Stimmen ═══════ */
   .voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .voice{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;}
-  .voice .quote-mark{font-family:var(--serif);font-size:56px;line-height:.6;color:var(--gold-soft);height:24px;}
+  .voice .quote-mark{font-family:var(--serif);font-size:56px;line-height:.6;color:var(--terra-soft);height:24px;}
   .voice p{font-size:var(--step-0);line-height:var(--lh-relaxed);color:var(--ink);flex:1;margin-top:12px;}
   .voice .by{margin-top:18px;font-family:var(--sans);font-weight:700;font-size:14px;color:var(--forest);}
   .voice .by span{display:block;font-weight:600;font-size:12.5px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
@@ -322,6 +402,15 @@
     .trust-grid{grid-template-columns:repeat(2,1fr);gap:26px 20px;}
     .site-footer .f-top{grid-template-columns:1fr 1fr;gap:30px;}
     .site-footer .f-about{grid-column:1 / -1;}
+    .hero--photo{min-height:78vh;padding:calc(var(--nav-h) + 9vh) 0 11vh;}
+    .hero--photo .hero-media img{object-position:50% 42%;}
+    .hero--photo .hero-scrim{background:
+      linear-gradient(179deg, rgba(28,31,16,.5) 0%, rgba(26,29,13,.46) 44%, rgba(20,23,10,.72) 100%);}
+    .hero--photo h1{font-size:clamp(38px,10vw,52px);}
+    .fb-grid{grid-template-columns:1fr;gap:var(--space-4);}
+    .fb-media{order:-1;max-width:340px;aspect-ratio:5/5;}
+    .feature-band.reverse .fb-media{order:-1;}
+    .botanik{opacity:.3 !important;}
   }
   @media (max-width:540px){
     .trust-grid{grid-template-columns:repeat(2,1fr);}
@@ -337,6 +426,7 @@
     .js .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
     .js .wheel-svg .ring,.js .wheel-svg .spoke{stroke-dashoffset:0 !important;transition:none !important;}
     .offer .media img,.post .media img{transition:none !important;}
+    .hero--photo .scroll-cue svg{animation:none !important;}
   }
   @media print{
     .nav,.mobile-menu,.hero-cta,.news-card,.form-card,.site-footer .f-bottom .made{display:none;}

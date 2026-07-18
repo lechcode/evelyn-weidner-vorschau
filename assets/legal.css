@@ -1,7 +1,7 @@
 /* Rechtsseiten (Impressum/Datenschutz) — schlank & lesbar. Nutzt Tokens aus site.css. */
 .legal{padding:calc(var(--nav-h) + clamp(30px,4vw,52px)) 0 var(--space-6);}
 .legal .wrap{width:min(760px,92vw);}
-.legal .demo-note{background:var(--sand);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;font-size:14px;color:var(--ink-soft);margin-bottom:var(--space-5);line-height:var(--lh-relaxed);}
+.legal .demo-note{background:var(--sand);border-left:3px solid var(--terra);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;font-size:14px;color:var(--ink-soft);margin-bottom:var(--space-5);line-height:var(--lh-relaxed);}
 .legal h1{font-size:var(--step-4);margin-bottom:var(--space-2);color:var(--forest-deep);}
 .legal .updated{font-size:13px;color:var(--ink-faint);margin-bottom:var(--space-5);letter-spacing:.02em;}
 .legal h2{font-size:var(--step-2);margin:var(--space-5) 0 var(--space-2);color:var(--forest);font-family:var(--serif);}

@@ -17,8 +17,8 @@
   <meta property="og:image" content="https://lechcode.github.io/evelyn-weidner-vorschau/assets/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta name="theme-color" content="#123321" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123321'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%23D6A82E' stroke-width='1.3'/%3E%3Cg stroke='%23EBE3D2' stroke-width='1'%3E%3Cpath d='M16 6.5V25.5M6.5 16H25.5M9.2 9.2l13.6 13.6M22.8 9.2 9.2 22.8'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23D6A82E'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#3B4023" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233B4023'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%23E2BB8F' stroke-width='1.3'/%3E%3Cg stroke='%23EBE3D2' stroke-width='1'%3E%3Cpath d='M16 6.5V25.5M6.5 16H25.5M9.2 9.2l13.6 13.6M22.8 9.2 9.2 22.8'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23C0532F'/%3E%3C/svg%3E" />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/mulish-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts.css">
@@ -59,7 +59,7 @@
   <header class="nav" id="nav">
     <div class="wrap nav-in">
       <a href="index.html" class="wm" aria-label="Evelyn Weidner — Startseite">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><g stroke="currentColor" stroke-width="1" opacity=".7"><path d="M16 3.5v25M3.5 16h25M7.4 7.4l17.2 17.2M24.6 7.4 7.4 24.6"/></g><circle cx="16" cy="16" r="3" fill="#C89A2C" stroke="none"/></svg>
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><g stroke="currentColor" stroke-width="1" opacity=".7"><path d="M16 3.5v25M3.5 16h25M7.4 7.4l17.2 17.2M24.6 7.4 7.4 24.6"/></g><circle cx="16" cy="16" r="3" fill="#C0532F" stroke="none"/></svg>
         Evelyn Weidner
       </a>
       <nav class="nav-links" aria-label="Hauptnavigation">
@@ -83,24 +83,24 @@
   </nav>
 
   <main id="main">
-    <!-- Artikel-Hero (ohne Figur, schmal) -->
-    <section class="page-hero">
-      <svg class="page-hero-leaf" viewBox="0 0 200 200" aria-hidden="true" fill="none" stroke="#7F9241" stroke-width="1.3"><path d="M100 195V15M100 60C100 60 55 50 45 18M100 60C100 60 145 50 155 18M100 115C100 115 50 105 40 73M100 115C100 115 150 105 160 73"/></svg>
-      <div class="wrap wrap-narrow" style="margin-inline:0;">
+    <!-- Artikel-Hero (zentriert, editorial) -->
+    <section class="article-hero">
+      <div class="botanik" style="left:3%;top:26%;width:min(13%,140px);transform:rotate(-18deg);" aria-hidden="true"><img src="assets/img/bo-esche.svg" alt="" loading="lazy"></div>
+      <div class="botanik" style="right:3%;top:22%;width:min(13%,140px);transform:scaleX(-1) rotate(-14deg);" aria-hidden="true"><img src="assets/img/bo-esche.svg" alt="" loading="lazy"></div>
+      <div class="wrap wrap-narrow">
         <span class="eyebrow reveal">Räuchern · Lesezeit 5 Min</span>
         <h1 class="reveal d1">Beifuß räuchern — Anleitung, Wirkung &amp; <em>Brauchtum.</em></h1>
         <p class="lead reveal d2">Er wächst an jedem Wegrand und wird doch kaum beachtet: Beifuß, die „Mutter aller Kräuter". Wie du ihn erkennst, sammelst, trocknest und verräucherst — und was das alte Brauchtum über ihn erzählt.</p>
-        <p class="reveal d3" style="margin-top:var(--space-3);font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-faint);">Von <strong style="color:var(--forest);">Evelyn Weidner</strong> · Juni 2026</p>
+        <p class="byline reveal d3">Von <strong>Evelyn Weidner</strong> · Juni 2026</p>
       </div>
     </section>
 
     <!-- Artikel -->
-    <section class="paper" style="padding-top:var(--space-4);">
-      <div class="wrap">
-        <div class="media-frame wide reveal" style="margin-bottom:var(--space-5);">
-          <picture><source type="image/webp" srcset="assets/img/raeuchern-haende-560.webp 560w, assets/img/raeuchern-haende-900.webp 900w, assets/img/raeuchern-haende-1200.webp 1200w" sizes="(max-width:1140px) 92vw, 1050px"><img src="assets/img/raeuchern-haende-900.jpg" width="1200" height="800" alt="Hände halten eine rauchende Räucherschale mit glimmendem Beifuß über einer Sommerwiese" fetchpriority="high" decoding="async"></picture>
-        </div>
-
+    <section class="paper article-wrap">
+      <div class="article-media reveal">
+        <picture><source type="image/webp" srcset="assets/img/raeuchern-haende-560.webp 560w, assets/img/raeuchern-haende-900.webp 900w, assets/img/raeuchern-haende-1200.webp 1200w" sizes="(max-width:1000px) 92vw, 940px"><img src="assets/img/raeuchern-haende-900.jpg" width="1200" height="750" alt="Hände halten eine rauchende Räucherschale mit glimmendem Beifuß über einer Sommerwiese" fetchpriority="high" decoding="async"></picture>
+      </div>
+      <div class="article-body">
         <article class="prose reveal">
           <p>Manchmal sind die kraftvollsten Pflanzen die, an denen wir jeden Tag achtlos vorübergehen. Beifuß ist so eine: hochgewachsen, unscheinbar graugrün, am Wegrand, auf Brachen und Schuttplätzen. Und doch nannten ihn die Menschen über Jahrhunderte ehrfürchtig die <strong>„Mutter aller Kräuter"</strong>. In der europäischen Räucherkunst hat er einen festen Platz — kein Palo Santo, kein weißer Salbei von weit her, sondern eine Pflanze vor deiner Haustür.</p>
 
@@ -137,6 +137,13 @@
 
           <p>Wenn du tiefer in die europäische Räucherkunst eintauchen möchtest — von der Geschichte über heimische Räucherpflanzen bis zur eigenen Mischung — begleite ich dich gern in einem <a href="kurse.html#raeuchern" style="color:var(--forest);text-decoration:underline;font-weight:700;">Räucherkurs</a>. Und wenn dich das Sammeln draußen ruft, findest du im Beitrag <a href="blog-essbare-wildkraeuter-mai.html" style="color:var(--forest);text-decoration:underline;font-weight:700;">Essbare Wildkräuter im Mai</a> die nächsten Pflanzenfreundschaften.</p>
         </article>
+        <div class="article-share reveal">
+          <div class="who">
+            <img class="av" src="assets/img/portrait-lachend-420.webp" width="44" height="44" alt="Evelyn Weidner" loading="lazy">
+            <div><b>Evelyn Weidner</b><span>Erdhüterin &amp; Kräuterkundige · Gaißach</span></div>
+          </div>
+          <a href="blog.html" class="textlink" style="margin-left:auto;">Zurück zum Journal <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 
@@ -159,7 +166,7 @@
     <div class="wrap">
       <div class="f-top">
         <div class="f-about">
-          <a href="index.html" class="wm"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><g stroke="currentColor" stroke-width="1" opacity=".7"><path d="M16 3.5v25M3.5 16h25M7.4 7.4l17.2 17.2M24.6 7.4 7.4 24.6"/></g><circle cx="16" cy="16" r="3" fill="#C89A2C" stroke="none"/></svg>Evelyn Weidner</a>
+          <a href="index.html" class="wm"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><g stroke="currentColor" stroke-width="1" opacity=".7"><path d="M16 3.5v25M3.5 16h25M7.4 7.4l17.2 17.2M24.6 7.4 7.4 24.6"/></g><circle cx="16" cy="16" r="3" fill="#C0532F" stroke="none"/></svg>Evelyn Weidner</a>
           <p>Erdhüterin im Tölzer Oberland. Ich begleite dich zurück in eine tiefe, alltagstaugliche Verbindung mit deiner Landschaft — durch den ganzen Jahreskreis.</p>
         </div>
         <div><h4>Angebote</h4><ul>
@@ -184,7 +191,7 @@
       </div>
       <div class="f-bottom">
         <span>© <span id="year">2026</span> Evelyn Weidner · Naturverbindung &amp; Kräuterkunde</span>
-        <span class="made">Handgebaut mit <span style="color:var(--gold-bright);">❧</span> in Landsberg am Lech</span>
+        <span class="made">Handgebaut mit <span style="color:var(--terra-line);">❧</span> in Landsberg am Lech</span>
       </div>
     </div>
   </footer>
