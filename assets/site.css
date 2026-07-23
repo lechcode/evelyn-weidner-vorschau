@@ -142,7 +142,8 @@
 
   /* Mobile Fullscreen-Menü */
   .mobile-menu{position:fixed;inset:0;z-index:99;background:var(--forest);color:var(--on-forest);
-    display:flex;flex-direction:column;justify-content:center;gap:6px;padding:var(--nav-h) 8vw 10vh;
+    display:flex;flex-direction:column;justify-content:center;gap:6px;
+    padding:var(--nav-h) 8vw 10vh;padding:var(--nav-h) 8vw 10svh;
     opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s;}
   .mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0);}
   .mobile-menu a{font-family:var(--serif);font-size:clamp(28px,8vw,42px);font-weight:600;color:var(--paper);padding:9px 0;border-bottom:1px solid var(--line-d);display:flex;align-items:center;justify-content:space-between;}
@@ -198,7 +199,8 @@
 
   /* ═══════ FOTO-HERO (Vollbild, zentriert) ═══════ */
   .hero--photo{position:relative;isolation:isolate;overflow:hidden;display:grid;align-items:center;
-    min-height:clamp(560px,90vh,880px);padding:calc(var(--nav-h) + 7vh) 0 12vh;}
+    min-height:clamp(560px,90vh,880px);min-height:clamp(560px,90svh,880px);
+    padding:calc(var(--nav-h) + 7vh) 0 12vh;}
   .hero--photo .hero-media{position:absolute;inset:0;z-index:-2;}
   .hero--photo .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;}
   .hero--photo .hero-scrim{position:absolute;inset:0;z-index:-1;background:
@@ -466,7 +468,8 @@
     .trust-grid{grid-template-columns:repeat(2,1fr);gap:26px 20px;}
     .site-footer .f-top{grid-template-columns:1fr 1fr;gap:30px;}
     .site-footer .f-about{grid-column:1 / -1;}
-    .hero--photo{min-height:78vh;padding:calc(var(--nav-h) + 9vh) 0 11vh;}
+    /* svh statt vh: hält beim iOS-Adressleisten-Ein/Ausblenden still (kein „Springen"). */
+    .hero--photo{min-height:78vh;min-height:78svh;padding:calc(var(--nav-h) + 9vh) 0 11vh;padding:calc(var(--nav-h) + 9svh) 0 11svh;}
     .hero--photo .hero-media img{object-position:50% 42%;}
     .hero--photo .hero-scrim{background:
       linear-gradient(179deg, rgba(28,31,16,.5) 0%, rgba(26,29,13,.46) 44%, rgba(20,23,10,.72) 100%);}
@@ -503,7 +506,7 @@
     /* Foto-Hero mobil GESTAPELT: Foto oben (blendet weich in Olive), Text darunter auf Olive
        — löst den „Foto nur im oberen Drittel, darunter grau"-Effekt (Text-über-Foto funktioniert schmal nicht). */
     .hero--photo{display:block;min-height:0;padding:0;background:var(--forest);isolation:auto;}
-    .hero--photo .hero-media{position:relative;z-index:auto;height:46vh;min-height:300px;}
+    .hero--photo .hero-media{position:relative;z-index:auto;height:46vh;height:46svh;min-height:300px;}
     .hero--photo .hero-media img{object-position:50% 44%;}
     .hero--photo .hero-media::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:46%;background:linear-gradient(to bottom,rgba(59,64,35,0),var(--forest));pointer-events:none;}
     .hero--photo .hero-scrim,.hero--photo .scroll-cue,.hero--photo .botanik,.hero--photo::after{display:none;}
@@ -512,15 +515,33 @@
     .hero--photo .tagline,.hero--photo h1,.hero--photo .hero-sub{text-shadow:none;}
     .hero--photo h1{margin-top:16px;}
     .hero--photo .hero-sub{margin-bottom:var(--space-4);}
+
+    /* Foto-Newsletter mobil GESTAPELT — dieselbe robuste Lösung wie der Hero:
+       Foto oben (blendet weich ins Olive), darunter Eyebrow/H2/Text/Formular auf --forest.
+       Löst Michaels „Text liegt unter den Bildern": auf schmal funktioniert Text-über-Foto nicht. */
+    .news--photo{display:block;padding:0 0 var(--space-6);background:var(--forest);isolation:auto;overflow:hidden;}
+    .news--photo .news-media{position:relative;z-index:auto;height:38vh;height:38svh;min-height:240px;}
+    .news--photo .news-media img{object-position:50% 42%;}
+    .news--photo .news-media::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:52%;background:linear-gradient(to bottom,rgba(59,64,35,0),var(--forest));pointer-events:none;}
+    .news--photo .news-scrim,.news--photo .botanik{display:none;}
+    .news--photo .wrap{position:relative;z-index:1;}
+    .news--photo .wrap-narrow{padding-top:8px;}
+    .news--photo h2,.news--photo p,.news--photo .eyebrow,.news--photo .news-note{text-shadow:none;}
+
+    /* Newsletter-Formular voll gestapelt: Feld + Button volle Breite (16px gegen iOS-Zoom steht). */
+    .news-form{flex-direction:column;align-items:stretch;}
+    .news-form input{max-width:none;min-width:0;}
+    .news-form .btn{justify-content:center;}
+
+    /* Deko-Ranken auf dem Handy nur noch als zarter Hauch (sonst wirken sie am schmalen Rand wie Fremdkörper). */
+    .botanik{opacity:.16 !important;}
   }
   @media (max-width:540px){
     .trust-grid{grid-template-columns:repeat(2,1fr);}
     .site-footer .f-top{grid-template-columns:1fr;}
     .epigraph blockquote{max-width:none;}
     .offer.small{flex-direction:column;align-items:stretch;}
-    .news-form{flex-direction:column;align-items:stretch;}
-    .news-form input{max-width:none;min-width:0;}
-    .news-form .btn{justify-content:center;}
+    /* .news-form-Stapelung liegt jetzt schon im 600er-Block (siehe oben). */
   }
   @media (prefers-reduced-motion:reduce){
     *{scroll-behavior:auto !important;}
