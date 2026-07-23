@@ -113,3 +113,58 @@
   fakeSubmit(document.getElementById('contactForm'),'contactMsg','Deine Nachricht ist unterwegs — bis wir uns hören, hör mal, was draußen wächst. 🌿 (Demo: es wird noch nichts versendet.)');
   fakeSubmit(document.getElementById('newsForm'),'newsMsg','Schön, dass du dabei bist! Im Live-Betrieb bekommst du jetzt eine Bestätigungs-Mail. 🌾');
   var _yr=document.getElementById('year'); if(_yr)_yr.textContent=new Date().getFullYear();
+
+  /* ---- Sanfter Pointer-Parallax auf echten Fotos ----
+     Das Foto driftet ganz leicht zum Cursor (max ±6px) und atmet mit einem Hauch
+     Scale (1.05). NUR bei feiner Maus und nur wenn Motion erlaubt ist — auf Touch/
+     Handy und bei prefers-reduced-motion passiert nichts, die Bilder bleiben still.
+     Effekt sitzt auf dem <img>, nie auf der Karte -> kein Konflikt mit den Karten-Lifts.
+     Fällt dieser Block aus, sind die Bilder einfach statisch (try/catch + Guards). */
+  try{ (function(){
+    if(!window.matchMedia) return;
+    if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return; // kein feiner Zeiger -> aus
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;  // reduced-motion -> aus
+
+    var DRIFT=5, SCALE=1.06; // ±5px Drift, 6% Atem-Scale = Sicherheitspolster gegen freie Kanten
+    var specs=[];
+    function collect(sel,imgSel){
+      document.querySelectorAll(sel).forEach(function(c){
+        var img=imgSel?c.querySelector(imgSel):c.querySelector('img');
+        if(img) specs.push({el:c,img:img});
+      });
+    }
+    // Alle echten Foto-Rahmen (Deko-SVGs bo-* und das Jahresrad bleiben außen vor).
+    collect('.smoke-figure'); collect('.fb-media'); collect('.offer .media');
+    collect('.post .media'); collect('.media-frame'); collect('.page-hero .figure');
+    collect('.article-media');
+    // Vollflächige Foto-Sektionen: Bild liegt hinter Scrim/Inhalt (z-index<0),
+    // also lauscht die Sektion und bewegt wird das darin liegende <img>.
+    collect('.hero--photo','.hero-media img');
+    collect('.news--photo','.news-media img');
+
+    specs.forEach(function(s){
+      var el=s.el, img=s.img;
+      el.classList.add('px-media'); img.classList.add('px-img');
+      var raf=0, nx=0, ny=0;
+      function apply(){ raf=0;
+        img.style.setProperty('--px',(nx*DRIFT).toFixed(2));
+        img.style.setProperty('--py',(ny*DRIFT).toFixed(2));
+      }
+      el.addEventListener('mouseenter',function(){
+        el.classList.add('px-active'); img.style.setProperty('--ps',SCALE);
+      });
+      el.addEventListener('mousemove',function(e){
+        var r=el.getBoundingClientRect(); if(!r.width||!r.height) return;
+        // -1..1 vom Mittelpunkt aus; Bild driftet in Cursor-Richtung ("folgt dem Blick").
+        nx=Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1));
+        ny=Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1));
+        if(!raf) raf=requestAnimationFrame(apply);
+      });
+      el.addEventListener('mouseleave',function(){
+        el.classList.remove('px-active');
+        if(raf){cancelAnimationFrame(raf);raf=0;}
+        // Sauber auf Null zurück — keine hängenbleibende Neigung.
+        img.style.setProperty('--px','0'); img.style.setProperty('--py','0'); img.style.setProperty('--ps','1');
+      });
+    });
+  })(); }catch(_px){ if(window.console&&console.warn)console.warn('Foto-Parallax übersprungen:',_px); }

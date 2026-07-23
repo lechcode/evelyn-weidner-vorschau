@@ -286,8 +286,8 @@
   .offer:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
   .offer-feature{grid-row:span 2;}
   .offer .media{position:relative;overflow:hidden;flex:1;min-height:150px;background:var(--sand-deep);}
-  .offer .media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
-  .offer:hover .media img{transform:scale(1.05);}
+  /* Bewegung liegt jetzt auf der Bild-Ebene (Pointer-Parallax, s. u.) statt als Karten-Hover-Zoom. */
+  .offer .media img{width:100%;height:100%;object-fit:cover;}
   .offer .body{padding:clamp(20px,2.4vw,30px);background:var(--paper);}
   .offer .kicker{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--forest-2);}
   .offer h3{font-size:var(--step-3);margin:9px 0 8px;}
@@ -377,8 +377,7 @@
   .post{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--paper);display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
   .post:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
   .post .media{aspect-ratio:16/10;overflow:hidden;background:var(--sand-deep);}
-  .post .media img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);}
-  .post:hover .media img{transform:scale(1.05);}
+  .post .media img{width:100%;height:100%;object-fit:cover;}
   .post .body{padding:clamp(20px,2.2vw,26px);display:flex;flex-direction:column;flex:1;}
   .post .tag{font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--forest-2);}
   .post h3{font-size:var(--step-2);margin:10px 0 8px;line-height:1.2;}
@@ -428,6 +427,26 @@
   .foto .jahresrad #seasonNodes{opacity:1 !important;transition:none !important;}
   .foto .jr-halo{animation:none !important;}
   .foto .reveal,.foto .jahresrad{transition:none !important;}
+
+  /* ═══════ Pointer-Parallax auf echten Fotos ═══════
+     Das Bild driftet ganz leicht zum Cursor und atmet mit einem Hauch Scale.
+     NUR bei feinem Zeiger (Maus) und NUR wenn Motion erlaubt ist. JS setzt
+     --px/--py/--ps auf dem <img>; ohne JS bleibt das Bild schlicht still.
+     Basis-Scale (--ps) ist Sicherheitspolster, damit der overflow:hidden-Rahmen
+     beim Driften nie eine Kante freigibt. */
+  /* JS taggt genau das zu bewegende Foto mit .px-img (Deko-SVGs bleiben unberührt). */
+  @media (hover:hover) and (pointer:fine){
+    .px-img{
+      transform:translate3d(calc(var(--px,0) * 1px), calc(var(--py,0) * 1px), 0) scale(var(--ps,1));
+      transition:transform .5s var(--ease);
+      backface-visibility:hidden;
+    }
+    .px-media.px-active .px-img{transition:transform .18s ease-out;will-change:transform;}
+  }
+  /* Reduced-motion: Bild liegt komplett still — kein Transform, keine Transition. */
+  @media (prefers-reduced-motion:reduce){
+    .px-img{transform:none !important;transition:none !important;}
+  }
 
   /* ═══════ Responsive ═══════ */
   @media (max-width:900px){
@@ -511,7 +530,7 @@
     .jahresrad .jr-band>path{opacity:.8 !important;transition:none !important;}
     .jahresrad #seasonNodes{opacity:1 !important;transition:none !important;}
     .jr-halo{animation:none !important;}
-    .offer .media img,.post .media img{transition:none !important;}
+    .px-img{transform:none !important;transition:none !important;}
     .hero--photo .scroll-cue svg{animation:none !important;}
   }
   @media print{
