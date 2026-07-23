@@ -11,7 +11,7 @@
     {name:"Beltane", sub:"Maifeuer", season:"Wonnemonat", title:"Die volle Blüte", month:4.0,
      text:"Die Natur steht in überschwänglicher Blüte, alles summt und leuchtet. Eine Zeit der Lebensfreude, der Sinnlichkeit und der Feste unter freiem Himmel."},
     {name:"Litha", sub:"Sommersonnwende", season:"Hochsommer", title:"Die Fülle des Sommers", month:5.7,
-     text:"Die Wiesen stehen in voller Kraft, Johanniskraut und Schafgarbe blühen, die Sonne hat ihren höchsten Stand. Eine Zeit zu ernten, zu trocknen und dankbar zu sein für das, was wächst."},
+     text:"Die Wiesen stehen in voller Kraft, Johanniskraut und Schafgarbe blühen, die Sonne hat ihren höchsten Stand überschritten. Eine Zeit zu ernten, zu trocknen und dankbar zu sein für das, was wächst."},
     {name:"Schnitterfest", sub:"Lughnasadh", season:"Spätsommer", title:"Die erste Ernte", month:7.0,
      text:"Das Korn reift, die ersten Früchte werden geerntet. Eine Zeit der Dankbarkeit für die Fülle — und der Besinnung darauf, was wir das Jahr über gesät haben."},
     {name:"Mabon", sub:"Herbst-T.u.G.", season:"Herbst", title:"Das Gleichgewicht", month:8.7,
@@ -23,70 +23,66 @@
   function polar(cx,cy,r,deg){var a=deg*Math.PI/180;return [cx+r*Math.cos(a), cy+r*Math.sin(a)];}
 
   try{ (function buildWheel(){
-    var spokes=document.getElementById('wheelSpokes'), nodes=document.getElementById('wheelNodes');
     var seasonNodes=document.getElementById('seasonNodes');
     // aktuelle Station IMMER bestimmen (auch ohne Rad — für die Karten-Texte)
     var now=new Date();
     var frac=now.getMonth()+ (now.getDate()-1)/31; // 0..11.x
     var best=0; for(var k=0;k<8;k++){ if(FEASTS[k].month<=frac) best=k; }
     var f=FEASTS[best];
-    var bs=document.getElementById('badgeSeason'), bf=document.getElementById('badgeFeast');
-    if(bs)bs.textContent=f.season; if(bf)bf.textContent=f.name;
     var sn=document.getElementById('seasonNow'),st=document.getElementById('seasonTitle'),sx=document.getElementById('seasonText');
     if(sn)sn.textContent='Gerade jetzt · '+f.season;
     if(st)st.textContent=f.title;
     if(sx)sx.textContent=f.text;
-    if(!nodes && !seasonNodes) return;   // kein Rad auf dieser Seite -> Texte sind gesetzt, fertig
+    if(!seasonNodes) return;   // kein Rad auf dieser Seite -> Texte sind gesetzt, fertig
     var NS="http://www.w3.org/2000/svg";
     function mk(tag,a){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);return e;}
     function anchorFor(deg){return (deg===-90||deg===90)?'middle':(Math.cos(deg*Math.PI/180)<0?'end':'start');}
     for(var i=0;i<8;i++){
       var cur=(i===best);
-      // Hero-Rad (optional — Legacy, nur wenn vorhanden)
-      if(nodes && spokes){
-        var pn=polar(150,150,120,ANGLES[i]);
-        spokes.appendChild(mk('line',{'class':'spoke',x1:150,y1:150,x2:pn[0],y2:pn[1],style:'--dash:130'}));
-        var g=mk('g',{'class':cur?'feast-node season-now':'feast-node','data-i':i});
-        g.appendChild(mk('circle',{'class':'node',cx:pn[0],cy:pn[1],r:3.6}));
-        var lo=polar(150,150,131,ANGLES[i]);
-        var t=mk('text',{'class':'node-label',x:lo[0],y:lo[1]+2,'text-anchor':anchorFor(ANGLES[i])});
-        t.textContent=FEASTS[i].name; g.appendChild(t);
-        nodes.appendChild(g);
-      }
-      // Jahresrad-Sektion (premium, viewBox 400) — Knoten auf dem Farb-Band + Fest-Label
-      if(seasonNodes){
-        var p2=polar(200,200,136,ANGLES[i]);
-        if(cur) seasonNodes.appendChild(mk('circle',{cx:p2[0],cy:p2[1],r:16,fill:'#C0532F',opacity:'.16'}));
-        seasonNodes.appendChild(mk('circle',{cx:p2[0],cy:p2[1],r:cur?9:6.5,fill:cur?'#C0532F':'#F5EFE2',stroke:cur?'#C0532F':'#3B4023','stroke-width':1.4}));
-        var lo2=polar(200,200,174,ANGLES[i]);
-        var t2=mk('text',{x:lo2[0],y:lo2[1]+3.5,'font-family':'Mulish, sans-serif','font-size':cur?12:11,'font-weight':cur?800:700,'letter-spacing':'.03em',fill:cur?'#8A3418':'#4E5344','text-anchor':anchorFor(ANGLES[i])});
-        t2.textContent=FEASTS[i].name;
-        seasonNodes.appendChild(t2);
-      }
-    }
-    // Hero-Rad Marker (Legacy, guarded)
-    if(nodes){
-      var mp=polar(150,150,120,ANGLES[best]);
-      var mkr=document.getElementById('wheelMarker');
-      if(mkr){mkr.setAttribute('cx',mp[0]);mkr.setAttribute('cy',mp[1]);}
+      // Knoten auf dem Farb-Band + Fest-Label. Schriftgröße kommt aus dem CSS
+      // (#seasonNodes text), damit sie auf dem kleineren Mobil-Rad mitwachsen kann.
+      var p2=polar(200,200,136,ANGLES[i]);
+      if(cur) seasonNodes.appendChild(mk('circle',{'class':'jr-halo',cx:p2[0],cy:p2[1],r:16,fill:'#C0532F',opacity:'.16'}));
+      seasonNodes.appendChild(mk('circle',{cx:p2[0],cy:p2[1],r:cur?9:6.5,fill:cur?'#C0532F':'#F5EFE2',stroke:cur?'#C0532F':'#3B4023','stroke-width':1.4}));
+      var lo2=polar(200,200,174,ANGLES[i]);
+      var t2=mk('text',{'class':cur?'is-now':'',x:lo2[0],y:lo2[1]+5,'font-family':'Mulish, sans-serif','font-weight':cur?800:700,'letter-spacing':'.03em',fill:cur?'#8A3418':'#4E5344','text-anchor':anchorFor(ANGLES[i])});
+      t2.textContent=FEASTS[i].name;
+      seasonNodes.appendChild(t2);
     }
   })(); }catch(_ew){ if(window.console&&console.warn)console.warn('Jahresrad übersprungen:',_ew); }
 
-  /* ---- Reveals ---- */
+  /* ---- Reveals + Jahresrad-Erwachen ---- */
+  var _wheel=document.querySelector('.jahresrad');
+  function wakeWheel(){ if(_wheel){_wheel.classList.add('jr-arm');_wheel.classList.add('awake');} }
   try{ (function(){
     var els=[].slice.call(document.querySelectorAll('.reveal'));
     if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       els.forEach(function(e){e.classList.add('in');});
-      var w=document.getElementById('wheel'); if(w)w.classList.add('drawn');
+      wakeWheel();
       return;
     }
     var io=new IntersectionObserver(function(ents){
       ents.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
     },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){io.observe(e);});
-    var w=document.getElementById('wheel');
-    if(w){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){w.classList.add('drawn');io2.disconnect();}});},{threshold:.2});io2.observe(w);}
-  })(); }catch(_er){ /* Reveals fehlgeschlagen -> Inhalte trotzdem zeigen */ document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');}); }
+    if(_wheel){
+      // Erst scharfschalten (Segmente auf 0), wenn das Aufwachen auch wirklich zugesichert ist:
+      // Observer für den schönen Moment beim Reinscrollen + zwei Sicherheitsnetze
+      // (schon-im-Bild beim Laden, Timeout). So kann das Rad niemals unsichtbar hängenbleiben.
+      _wheel.classList.add('jr-arm');
+      var io2=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){wakeWheel();io2.disconnect();} });
+      },{threshold:.25});
+      io2.observe(_wheel);
+      // Liegt das Rad beim Laden schon (fast) im Sichtfeld: sofort wecken, nicht auf Scroll warten.
+      var wr=_wheel.getBoundingClientRect();
+      if(wr.top < (innerHeight||800)*0.9) wakeWheel();
+      setTimeout(wakeWheel,1500);
+    }
+  })(); }catch(_er){ /* Reveals fehlgeschlagen -> Inhalte trotzdem zeigen */
+    document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});
+    wakeWheel();
+  }
 
   /* ---- Nav scrolled + Burger (läuft IMMER, unabhängig vom obigen) ---- */
   (function(){

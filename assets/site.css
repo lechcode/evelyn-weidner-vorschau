@@ -39,7 +39,6 @@
     --shadow:0 1px 0 rgba(255,255,255,.5), 0 2px 8px -4px rgba(44,48,25,.16), 0 30px 60px -34px rgba(44,48,25,.32);
     --shadow-lg:0 2px 10px -5px rgba(44,48,25,.22), 0 44px 80px -50px rgba(30,33,15,.58);
     --ease:cubic-bezier(.22,.61,.36,1);
-    --focus:0 0 0 3px rgba(192,83,47,.5);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px);-webkit-text-size-adjust:100%;overflow-x:clip;}
@@ -48,16 +47,22 @@
   a{color:inherit;text-decoration:none;}
   img,svg{display:block;max-width:100%;}
   picture{display:block;}
-  .wheel-photo picture,.hero-figure picture,.offer .media picture,.smoke-figure picture,.post .media picture{display:block;width:100%;height:100%;}
+  .offer .media picture,.smoke-figure picture,.post .media picture{display:block;width:100%;height:100%;}
   ::selection{background:rgba(192,83,47,.2);}
-  :focus-visible{outline:none;box-shadow:var(--focus);border-radius:6px;}
+  /* Fokus-Ring — EINE Geste auf der ganzen Seite. outline statt box-shadow,
+     damit der Ring der echten Elementform folgt (Pille bleibt Pille, Feld bleibt Feld). */
+  :focus-visible{outline:2px solid var(--terra);outline-offset:2px;box-shadow:none;}
+  .forest :focus-visible,.hero--photo :focus-visible,.news--photo :focus-visible,
+  .news-card :focus-visible,.cta-band :focus-visible,.mobile-menu :focus-visible,
+  .site-footer :focus-visible,.announce :focus-visible{outline-color:var(--terra-line);}
 
   .wrap{width:min(1140px,92vw);margin-inline:auto;}
   .wrap-narrow{width:min(760px,92vw);margin-inline:auto;}
   section{padding:var(--space-6) 0;position:relative;}
   .sec-head{max-width:60ch;margin-bottom:var(--space-5);}
   .sec-head.center{margin-inline:auto;text-align:center;}
-  .sec-head h2{font-size:var(--step-4);margin-top:var(--space-2);line-height:var(--lh-tight);}
+  /* Greift BEIDE Schreibweisen: sec-head als Container UND sec-head direkt auf dem h2. */
+  .sec-head h2,h2.sec-head{font-size:var(--step-4);margin-top:var(--space-2);line-height:var(--lh-tight);}
   .sec-head p{font-size:var(--step-1);margin-top:var(--space-3);line-height:var(--lh-relaxed);color:var(--ink-soft);}
   .center{text-align:center;} .mx-auto{margin-inline:auto;}
 
@@ -76,10 +81,13 @@
   .lead{font-size:var(--step-1);line-height:var(--lh-relaxed);color:var(--ink-soft);}
 
   /* Buttons — Terrakotta-Primär, abgerundetes Rechteck (Xálish) */
-  .btn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;
-    background:var(--terra);color:#FCF6EC;
+  /* Label #fff statt Creme: hält die Terrakotta-Fläche (Markenfarbe) und erreicht AA (4,65:1).
+     Der 1.5px-Rahmen ist transparent — dadurch hat der Ghost-Button ohne Extra-Padding
+     exakt dieselbe Box wie der Primär-Button, auf 1x wie auf Retina. */
+  .btn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    background:var(--terra);color:#fff;border:1.5px solid transparent;
     font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.02em;
-    padding:15px 28px;border-radius:8px;
+    padding:13.5px 26.5px;border-radius:8px;
     box-shadow:0 14px 26px -14px rgba(138,52,24,.62);
     transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);white-space:nowrap;}
   .btn:hover{transform:translateY(-2px);background:var(--terra-deep);box-shadow:0 20px 34px -16px rgba(138,52,24,.72);}
@@ -87,12 +95,12 @@
   .btn .arr{transition:transform .28s var(--ease);}
   .btn:hover .arr{transform:translateX(4px);}
   /* .btn-gold-Alias bleibt aus Kompatibilität, ist jetzt Terrakotta wie der Primär-Button */
-  .btn-gold{background:var(--terra);color:#FCF6EC;box-shadow:0 14px 26px -14px rgba(138,52,24,.62);}
+  .btn-gold{background:var(--terra);color:#fff;box-shadow:0 14px 26px -14px rgba(138,52,24,.62);}
   .btn-gold:hover{background:var(--terra-deep);}
   /* helle Variante für dunkle Flächen (Xálish' Creme-Buttons auf Olive) */
   .btn-cream{background:var(--paper);color:var(--forest-deep);box-shadow:0 14px 26px -14px rgba(30,33,15,.5);}
   .btn-cream:hover{background:#fff;color:var(--terra-deep);}
-  .btn-ghost{background:transparent;color:var(--forest-deep);border:1.5px solid rgba(38,42,28,.28);box-shadow:none;font-weight:600;}
+  .btn-ghost{background:transparent;color:var(--forest-deep);border-color:rgba(38,42,28,.28);box-shadow:none;font-weight:600;}
   .btn-ghost:hover{background:rgba(38,42,28,.05);border-color:rgba(38,42,28,.5);box-shadow:none;transform:translateY(-2px);}
   .forest .btn-ghost,.cta-band .btn-ghost,.news-card .btn-ghost,.hero--photo .btn-ghost{color:var(--on-forest);border-color:rgba(241,236,223,.4);}
   .forest .btn-ghost:hover,.cta-band .btn-ghost:hover,.news-card .btn-ghost:hover,.hero--photo .btn-ghost:hover{background:rgba(241,236,223,.12);border-color:rgba(241,236,223,.7);color:var(--paper);}
@@ -100,6 +108,14 @@
   .textlink:hover{gap:11px;color:var(--terra-deep);border-color:var(--terra-deep);}
   .forest .textlink,.hero--photo .textlink{color:var(--terra-line);border-color:var(--terra-line);}
   .forest .textlink:hover,.hero--photo .textlink:hover{color:#E7A585;border-color:#E7A585;}
+
+  /* Ganze Karte klickbar: die Karte hebt sich beim Hover, also muss sie auch reagieren.
+     Erledigt gleichzeitig die zu kleinen Tap-Ziele auf dem Handy. */
+  .post{position:relative;}
+  .router-card>.textlink::after,
+  .offer>.body>.textlink::after,
+  .post>.body>.textlink::after{content:"";position:absolute;inset:0;z-index:2;}
+  .router-card:hover .textlink,.offer:hover .textlink,.post:hover .textlink{gap:11px;color:var(--terra-deep);border-color:var(--terra-deep);}
 
   /* Wortmarke */
   .wm{display:inline-flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.01em;line-height:1;color:var(--forest-deep);}
@@ -150,24 +166,6 @@
   .hero-sub{font-size:var(--step-1);line-height:var(--lh-relaxed);color:var(--ink-soft);margin-top:var(--space-3);max-width:46ch;}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:var(--space-4);align-items:center;}
 
-  /* Jahresrad-Bühne */
-  .wheel-stage{position:relative;justify-self:center;width:100%;max-width:460px;aspect-ratio:1;}
-  .wheel-photo{position:absolute;inset:16% 16% 16% 16%;border-radius:50%;overflow:hidden;box-shadow:var(--shadow-lg);z-index:1;}
-  .wheel-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;}
-  .wheel-svg{position:relative;width:100%;height:100%;z-index:2;overflow:visible;}
-  .wheel-svg .ring{fill:none;stroke:var(--forest);stroke-width:1;opacity:.5;}
-  .wheel-svg .spoke{stroke:var(--forest);stroke-width:.6;opacity:.28;}
-  .wheel-svg .node{fill:var(--cream);stroke:var(--forest);stroke-width:1.2;}
-  .wheel-svg .node-label{font-family:var(--sans);font-size:6.4px;font-weight:700;letter-spacing:.06em;fill:var(--ink-soft);text-transform:uppercase;}
-  .wheel-svg .season-now .node{fill:var(--gold);stroke:var(--gold);r:5.4;}
-  .wheel-svg .season-now .node-label{fill:var(--forest-deep);}
-  .wheel-svg .marker{fill:var(--terra);stroke:var(--paper);stroke-width:1.4;}
-  .wheel-badge{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);z-index:3;
-    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-pill);
-    padding:9px 18px;box-shadow:var(--shadow);text-align:center;white-space:nowrap;}
-  .wheel-badge b{display:block;font-family:var(--serif);font-size:16px;color:var(--forest-deep);line-height:1.1;font-weight:600;}
-  .wheel-badge span{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);}
-
   /* dezente Kräuter-Marke im Hintergrund */
   .hero-leaf{position:absolute;pointer-events:none;z-index:0;opacity:.5;}
   .hero-leaf.l1{top:8%;left:-40px;width:150px;transform:rotate(-12deg);}
@@ -206,6 +204,10 @@
   .hero--photo .hero-scrim{position:absolute;inset:0;z-index:-1;background:
     linear-gradient(179deg, rgba(30,34,18,.56) 0%, rgba(30,34,18,.2) 26%, rgba(30,34,18,.4) 56%, rgba(22,25,11,.72) 100%),
     radial-gradient(78% 66% at 50% 52%, transparent 26%, rgba(26,29,13,.5));}
+  /* Fuß des Fotos löst sich exakt ins Olive des Vertrauens-Bandes auf — keine harte Kante mehr.
+     (Mobil macht das schon .hero-media::after, deshalb dort abgeschaltet.) */
+  .hero--photo::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:24%;z-index:-1;
+    background:linear-gradient(to bottom,rgba(59,64,35,0),var(--forest));pointer-events:none;}
   .hero--photo .botanik{z-index:0;}
   .hero--photo .hero-inner{position:relative;z-index:1;width:min(760px,92vw);margin-inline:auto;text-align:center;}
   .hero--photo .tagline{justify-content:center;color:rgba(252,246,236,.94);text-shadow:0 1px 14px rgba(30,33,15,.5);}
@@ -216,6 +218,8 @@
   .hero--photo .hero-sub{color:rgba(252,246,236,.92);font-size:var(--step-1);line-height:var(--lh-relaxed);
     max-width:50ch;margin:0 auto var(--space-4);text-shadow:0 1px 16px rgba(24,27,12,.5);}
   .hero--photo .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;}
+  /* Unter einer 84px-Headline braucht der CTA Hero-Maßstab, sonst liest er wie ein Formularknopf. */
+  .hero--photo .hero-cta .btn{padding:15.5px 30.5px;font-size:15.5px;}
   .hero--photo .scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:1;
     display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(252,246,236,.82);
     font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;}
@@ -229,7 +233,7 @@
   .fb-card{background:var(--paper);border-radius:var(--radius-lg);padding:clamp(28px,3.6vw,54px);box-shadow:var(--shadow-lg);position:relative;}
   .forest .fb-card h2,.forest .fb-card h3{color:var(--forest-deep);}
   .fb-card .lead,.fb-card p{color:var(--ink-soft);}
-  .fb-media{position:relative;justify-self:center;width:100%;max-width:440px;aspect-ratio:4/5;box-shadow:var(--shadow-lg);}
+  .fb-media{position:relative;justify-self:center;width:100%;max-width:440px;aspect-ratio:4/5;box-shadow:var(--shadow-lg);background:var(--sand-deep);}
   .fb-media picture{display:block;width:100%;height:100%;}
   .fb-media img{width:100%;height:100%;object-fit:cover;}
 
@@ -248,14 +252,14 @@
 
   /* ═══════ Bänder / Marquee-Werte ═══════ */
   .trust{background:var(--forest);color:var(--on-forest);}
-  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:clamp(26px,3.4vw,38px) 0;}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:clamp(34px,4.4vw,48px) 0;}
   .trust-item{text-align:center;}
   .trust-item b{display:block;font-family:var(--serif);font-size:var(--step-3);color:var(--gold-bright);font-weight:600;line-height:1;}
   .trust-item span{display:block;margin-top:8px;font-size:13.5px;color:var(--on-forest-dim);letter-spacing:.02em;}
 
   /* ═══════ Epigraph ═══════ */
   .epigraph{text-align:center;padding:var(--space-6) 0;}
-  .epigraph blockquote{font-family:var(--serif);font-size:var(--step-4);line-height:1.28;font-weight:500;color:var(--forest-deep);font-style:italic;max-width:20ch;margin-inline:auto;}
+  .epigraph blockquote{font-family:var(--serif);font-size:var(--step-4);line-height:1.28;font-weight:500;color:var(--forest-deep);font-style:italic;max-width:20ch;margin-inline:auto;text-wrap:balance;}
   .epigraph .who{margin-top:var(--space-3);font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--moss);}
 
   /* ═══════ Aktivismus-Statement ═══════ */
@@ -277,10 +281,11 @@
 
   /* ═══════ Angebote (gewichtet) ═══════ */
   .offers{display:grid;grid-template-columns:1.5fr 1fr;grid-auto-rows:minmax(0,auto);gap:22px;}
-  .offer{position:relative;overflow:hidden;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;min-height:270px;transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
-  .offer:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+  /* EINE Hover-Geste für alle Karten: -4px + var(--shadow), .3s. */
+  .offer{position:relative;overflow:hidden;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;min-height:270px;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+  .offer:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
   .offer-feature{grid-row:span 2;}
-  .offer .media{position:relative;overflow:hidden;flex:1;min-height:150px;}
+  .offer .media{position:relative;overflow:hidden;flex:1;min-height:150px;background:var(--sand-deep);}
   .offer .media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
   .offer:hover .media img{transform:scale(1.05);}
   .offer .body{padding:clamp(20px,2.4vw,30px);background:var(--paper);}
@@ -293,6 +298,10 @@
   .offer.small .body{padding:clamp(18px,2vw,24px);}
   .offer.small h3{font-size:var(--step-2);margin-bottom:6px;}
   .offer.small p{font-size:14.5px;}
+  /* Ruhige Variante (dōTERRA-Hinweis): durchgezogener Rahmen auf Sand statt gestrichelt —
+     gestrichelt liest in Design-Sprache als „Platzhalter". */
+  .offer--quiet,.offer--quiet .body{background:var(--sand);}
+  .offer.small.offer--quiet p{font-size:var(--step-0);}
 
   /* ═══════ Jahreskreis-Sektion ═══════ */
   .season{position:relative;overflow:hidden;}
@@ -305,10 +314,41 @@
   .season-card li{display:flex;gap:12px;align-items:flex-start;font-size:var(--step-0);color:var(--ink-soft);}
   .season-card li svg{width:19px;height:19px;flex:none;margin-top:3px;color:var(--moss);}
   .season-visual{position:relative;justify-self:center;width:100%;max-width:400px;aspect-ratio:1;}
+  /* Papier-Scheibe unter dem Rad: es liegt als Objekt auf dem Sand, statt darauf gezeichnet zu sein.
+     inset:16% = Radius 160 im viewBox — knapp außerhalb des Farbbands (152), innerhalb der Labels (174). */
+  .season-visual::before{content:"";position:absolute;inset:16%;border-radius:50%;
+    background:radial-gradient(circle at 50% 36%,var(--paper),var(--cream) 78%);box-shadow:var(--shadow);}
+  .jahresrad{position:relative;z-index:1;width:100%;height:100%;}
+  /* Fest-Labels: 11 viewBox-Einheiten waren real 7,5 CSS-px mobil / 9,3 Desktop. */
+  #seasonNodes text{font-size:14px;}
+  #seasonNodes text.is-now{font-size:15px;}
+  .jr-halo{transform-box:fill-box;transform-origin:50% 50%;}
+
+  /* ── Das Rad wacht beim Scroll-In auf: Ringe zeichnen sich, Segmente kommen nacheinander,
+        Knoten zuletzt, dann atmet der aktuelle Fest-Knoten ruhig weiter.
+        WICHTIG: Verborgen wird NUR über .jr-arm — und die Klasse setzt site.js selbst,
+        direkt bevor es das Aufwachen garantiert (Observer + Timeout-Netz). Fällt site.js
+        aus, greift keine dieser Regeln und das Rad steht einfach fertig da. ── */
+  .jahresrad.jr-arm .jr-ring{stroke-dasharray:var(--dash,1000);stroke-dashoffset:var(--dash,1000);transition:stroke-dashoffset 1.2s var(--ease);}
+  .jahresrad.jr-arm.awake .jr-ring{stroke-dashoffset:0;}
+  .jahresrad.jr-arm .jr-band>path{opacity:0;transition:opacity .6s var(--ease);}
+  .jahresrad.jr-arm.awake .jr-band>path{opacity:.8;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(1){transition-delay:.10s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(2){transition-delay:.17s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(3){transition-delay:.24s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(4){transition-delay:.31s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(5){transition-delay:.38s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(6){transition-delay:.45s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(7){transition-delay:.52s;}
+  .jahresrad.jr-arm.awake .jr-band>path:nth-child(8){transition-delay:.59s;}
+  .jahresrad.jr-arm #seasonNodes{opacity:0;transition:opacity .6s var(--ease) .75s;}
+  .jahresrad.jr-arm.awake #seasonNodes{opacity:1;}
+  @keyframes jrPulse{0%,100%{transform:scale(1);opacity:.16;}50%{transform:scale(1.3);opacity:.05;}}
+  .jahresrad.awake .jr-halo{animation:jrPulse 3s ease-in-out 1.5s infinite;}
 
   /* ═══════ Räuchern ═══════ */
   .smoke-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;}
-  .smoke-figure{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;max-width:440px;box-shadow:var(--shadow-lg);justify-self:center;width:100%;}
+  .smoke-figure{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;max-width:440px;box-shadow:var(--shadow-lg);justify-self:center;width:100%;background:var(--sand-deep);}
   .smoke-figure img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;}
 
   /* ═══════ Stimmen ═══════ */
@@ -325,9 +365,9 @@
   .news-card h2{color:var(--paper);font-size:var(--step-4);}
   .news-card p{color:var(--on-forest-dim);font-size:var(--step-1);margin-top:14px;line-height:var(--lh-relaxed);}
   .news-form{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:var(--space-4);}
-  .news-form input{flex:1;min-width:220px;max-width:340px;padding:15px 20px;border-radius:var(--radius-pill);border:1.5px solid rgba(241,236,223,.25);background:rgba(241,236,223,.08);color:var(--paper);font-family:var(--sans);font-size:15px;}
+  .news-form input{flex:1;min-width:220px;max-width:340px;padding:15px 20px;border-radius:var(--radius-pill);border:1.5px solid rgba(241,236,223,.25);background:rgba(241,236,223,.08);color:var(--paper);font-family:var(--sans);font-size:16px;}
   .news-form input::placeholder{color:var(--on-forest-dim);}
-  .news-form input:focus-visible{outline:none;border-color:var(--gold-bright);box-shadow:0 0 0 3px rgba(224,180,65,.3);}
+  .news-form input:focus-visible{border-color:var(--terra-line);}
   .news-note{margin-top:16px;font-size:12.5px;color:var(--on-forest-dim);opacity:.85;}
   .news-leaf{position:absolute;left:-50px;top:-50px;width:min(38%,280px);opacity:.12;z-index:0;}
   .form-msg{margin-top:16px;font-size:14.5px;font-weight:600;min-height:1.2em;}
@@ -336,7 +376,7 @@
   .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .post{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--paper);display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
   .post:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
-  .post .media{aspect-ratio:16/10;overflow:hidden;}
+  .post .media{aspect-ratio:16/10;overflow:hidden;background:var(--sand-deep);}
   .post .media img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);}
   .post:hover .media img{transform:scale(1.05);}
   .post .body{padding:clamp(20px,2.2vw,26px);display:flex;flex-direction:column;flex:1;}
@@ -354,12 +394,14 @@
   .contact-info .row span,.contact-info .row a{color:var(--ink-soft);font-size:var(--step-0);}
   .contact-info .row a:hover{color:var(--forest);}
   .form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,3vw,38px);box-shadow:var(--shadow);}
-  .demo-flag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--terra);background:var(--terra-soft);padding:6px 13px;border-radius:var(--radius-pill);margin-bottom:18px;}
+  /* --terra auf --terra-soft war 2,97:1 -> --terra-ink macht daraus 5,2:1 (AA). */
+  .demo-flag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--terra-ink);background:var(--terra-soft);padding:6px 13px;border-radius:var(--radius-pill);margin-bottom:18px;}
   .field{margin-bottom:16px;}
   .field label{display:block;font-size:13px;font-weight:700;color:var(--forest);margin-bottom:6px;letter-spacing:.02em;}
-  .field input,.field textarea,.field select{width:100%;padding:13px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--line);background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:15px;transition:border-color .2s,box-shadow .2s;}
+  /* 16px ist Pflicht: darunter zoomt iOS-Safari beim Antippen ins Feld hinein. */
+  .field input,.field textarea,.field select{width:100%;padding:13px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--line);background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;transition:border-color .2s,box-shadow .2s;}
   .field textarea{resize:vertical;min-height:110px;}
-  .field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,154,44,.18);}
+  .field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible{border-color:var(--terra);}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
   .form-hint{font-size:12.5px;color:var(--ink-faint);margin-top:4px;}
 
@@ -380,9 +422,12 @@
   .js .reveal.in{opacity:1;transform:none;}
   .js .reveal.d1{transition-delay:.08s;} .js .reveal.d2{transition-delay:.16s;} .js .reveal.d3{transition-delay:.24s;}
   .foto .reveal{opacity:1 !important;transform:none !important;}
-  /* Jahresrad Zeichnen */
-  .js .wheel-svg .ring,.js .wheel-svg .spoke{stroke-dasharray:var(--dash,1000);stroke-dashoffset:var(--dash,1000);transition:stroke-dashoffset 1.6s var(--ease);}
-  .js .wheel-svg.drawn .ring,.js .wheel-svg.drawn .spoke{stroke-dashoffset:0;}
+  /* Screenshot-Modus (?foto): Rad sofort im Endzustand, nichts hängt in der Animation. */
+  .foto .jahresrad .jr-ring{stroke-dashoffset:0 !important;transition:none !important;}
+  .foto .jahresrad .jr-band>path{opacity:.8 !important;transition:none !important;}
+  .foto .jahresrad #seasonNodes{opacity:1 !important;transition:none !important;}
+  .foto .jr-halo{animation:none !important;}
+  .foto .reveal,.foto .jahresrad{transition:none !important;}
 
   /* ═══════ Responsive ═══════ */
   @media (max-width:900px){
@@ -392,7 +437,6 @@
     .hero-copy{max-width:none;text-align:center;margin-inline:auto;}
     .hero .eyebrow{justify-content:center;}
     .hero-cta{justify-content:center;}
-    .wheel-stage{max-width:312px;order:-1;}
     .hero-leaf.l1{display:none;}
     .offers{grid-template-columns:1fr;}
     .offer-feature{grid-row:auto;}
@@ -412,8 +456,25 @@
     .fb-media{order:-1;max-width:340px;aspect-ratio:5/5;}
     .feature-band.reverse .fb-media{order:-1;}
     .botanik{opacity:.3 !important;}
+    /* Rad wird kleiner (320px) -> Labels müssen im viewBox größer werden, um lesbar zu bleiben. */
+    #seasonNodes text{font-size:17px;}
+    #seasonNodes text.is-now{font-size:18.5px;}
   }
   @media (max-width:600px){
+    /* Tap-Ziele: Trefferfläche wächst, Optik bleibt exakt gleich (Unterstrich sitzt weiter am Text).
+       In den Karten ist ohnehin die ganze Fläche klickbar — dort kein zweites Overlay. */
+    .textlink{position:relative;}
+    .router-card .textlink,.offer .textlink,.post .textlink{position:static;}
+    .textlink::before{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;}
+    .router-card .textlink::before,.offer .textlink::before,.post .textlink::before{content:none;}
+    .announce a{padding:12px 2px;margin:-12px -2px;}
+    /* Footer & Kontakt-Zeilen: auf dem Handy echte Fingerflächen (Optik bleibt, nur mehr Höhe). */
+    .site-footer ul a{display:inline-block;padding:11px 0;}
+    .site-footer ul{gap:1px;}
+    .site-footer .f-bottom a{display:inline-block;padding:9px 0;}
+    .contact-info .row a{display:inline-block;padding:9px 0;}
+    .nav .wm,.site-footer .wm{padding:9px 0;}
+
     /* Ankündigungsleiste kompakt: 1 Zeile statt 3 (war ~112px hoch) */
     .announce .wrap{gap:9px;padding:7px 0;flex-wrap:nowrap;}
     .announce .a-lg{display:none;} .announce .a-sm{display:inline;}
@@ -426,7 +487,7 @@
     .hero--photo .hero-media{position:relative;z-index:auto;height:46vh;min-height:300px;}
     .hero--photo .hero-media img{object-position:50% 44%;}
     .hero--photo .hero-media::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:46%;background:linear-gradient(to bottom,rgba(59,64,35,0),var(--forest));pointer-events:none;}
-    .hero--photo .hero-scrim,.hero--photo .scroll-cue,.hero--photo .botanik{display:none;}
+    .hero--photo .hero-scrim,.hero--photo .scroll-cue,.hero--photo .botanik,.hero--photo::after{display:none;}
     .hero--photo .wrap{position:relative;z-index:1;}
     .hero--photo .hero-inner{padding:2px 0 48px;}
     .hero--photo .tagline,.hero--photo h1,.hero--photo .hero-sub{text-shadow:none;}
@@ -445,7 +506,11 @@
   @media (prefers-reduced-motion:reduce){
     *{scroll-behavior:auto !important;}
     .js .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
-    .js .wheel-svg .ring,.js .wheel-svg .spoke{stroke-dashoffset:0 !important;transition:none !important;}
+    /* Jahresrad: Endzustand sofort, kein Zeichnen, kein Puls. */
+    .jahresrad .jr-ring{stroke-dashoffset:0 !important;transition:none !important;}
+    .jahresrad .jr-band>path{opacity:.8 !important;transition:none !important;}
+    .jahresrad #seasonNodes{opacity:1 !important;transition:none !important;}
+    .jr-halo{animation:none !important;}
     .offer .media img,.post .media img{transition:none !important;}
     .hero--photo .scroll-cue svg{animation:none !important;}
   }
